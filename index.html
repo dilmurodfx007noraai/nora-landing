@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aivo — O'zbek AI Yordamchi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #05050a;
+  --card: #0e0e18;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0eeff;
+  --muted: #6b6880;
+  --accent: #a78bfa;
+  --accent2: #f472b6;
+  --green: #34d399;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ── GLOW BLOBS ── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 { width: 600px; height: 600px; background: rgba(167,139,250,0.12); top: -200px; left: -200px; }
+.blob-2 { width: 500px; height: 500px; background: rgba(244,114,182,0.08); top: 100px; right: -150px; }
+.blob-3 { width: 400px; height: 400px; background: rgba(52,211,153,0.06); bottom: 200px; left: 50%; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(5,5,10,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.btn-nav {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-nav:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(167,139,250,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.pulse-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(167,139,250,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(167,139,250,0.4); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--text); }
+
+/* ── HERO VISUAL ── */
+.hero-visual {
+  margin-top: 80px;
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.phone-mock {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+.phone-mock::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.mock-btn {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(167,139,250,0.3);
+  background: rgba(167,139,250,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  animation: mockPulse 3s ease infinite;
+}
+@keyframes mockPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(167,139,250,0.2); }
+  50% { box-shadow: 0 0 0 20px rgba(167,139,250,0); }
+}
+.mock-waves {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+}
+.mock-wave {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+  animation: waveAnim 1s ease-in-out infinite;
+}
+.mock-wave:nth-child(1) { height: 12px; animation-delay: 0s; }
+.mock-wave:nth-child(2) { height: 24px; animation-delay: 0.1s; }
+.mock-wave:nth-child(3) { height: 32px; animation-delay: 0.2s; }
+.mock-wave:nth-child(4) { height: 24px; animation-delay: 0.1s; }
+.mock-wave:nth-child(5) { height: 12px; animation-delay: 0s; }
+@keyframes waveAnim {
+  0%,100% { transform: scaleY(0.4); opacity: 0.5; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+.mock-chat {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mock-msg {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 85%;
+}
+.mock-msg.user {
+  background: rgba(167,139,250,0.15);
+  border: 1px solid rgba(167,139,250,0.2);
+  align-self: flex-end;
+  color: var(--text);
+}
+.mock-msg.ai {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  align-self: flex-start;
+  color: var(--muted);
+}
+.mock-balance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+.balance-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS ── */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 40px 48px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* ── SECTION ── */
+section { position: relative; padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-sub { color: var(--muted); font-size: 18px; font-weight: 300; max-width: 480px; }
+
+/* ── FEATURES ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 64px;
+}
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(167,139,250,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.feature-card:hover { border-color: rgba(167,139,250,0.3); transform: translateY(-4px); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(167,139,250,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.feature-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.feature-desc { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* ── PRICING ── */
+#pricing { text-align: center; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 64px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px 24px;
+  position: relative;
+  transition: transform 0.3s;
+}
+.price-card:hover { transform: translateY(-4px); }
+.price-card.popular {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(244,114,182,0.05));
+}
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.price-tokens {
+  font-family: 'Syne', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text);
+}
+.price-tokens span { font-size: 18px; color: var(--muted); font-weight: 400; }
+.price-usd {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 8px 0 20px;
+  font-family: 'Syne', sans-serif;
+}
+.price-features { list-style: none; text-align: left; margin-bottom: 28px; }
+.price-features li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.btn-buy {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s, transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-buy-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(167,139,250,0.3);
+}
+.btn-buy-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.btn-buy:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ── HOW IT WORKS ── */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 64px;
+  counter-reset: step;
+}
+.how-step {
+  position: relative;
+  counter-increment: step;
+}
+.how-step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: 'Syne', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: rgba(167,139,250,0.08);
+  line-height: 1;
+  display: block;
+  margin-bottom: 16px;
+}
+.how-step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.how-step p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* ── FREE BANNER ── */
+.free-banner {
+  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(244,114,182,0.06));
+  border: 1px solid rgba(167,139,250,0.2);
+  border-radius: 32px;
+  padding: 64px 48px;
+  text-align: center;
+  margin: 0 48px 100px;
+}
+.free-banner h2 { margin-bottom: 16px; }
+.free-banner p { color: var(--muted); font-size: 18px; margin-bottom: 36px; font-weight: 300; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy { color: var(--muted); font-size: 13px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Aivo</div>
+  <div class="nav-links">
+    <a href="#features">Imkoniyatlar</a>
+    <a href="#pricing">Narxlar</a>
+    <a href="#how">Qanday ishlaydi</a>
+    <a href="app.html" class="btn-nav">Boshlash →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-badge">
+    <span class="pulse-dot"></span>
+    O'zbek tilida ishlaydi
+  </div>
+
+  <h1>Sening ovozli<br><span>AI do'sting</span></h1>
+  <p class="hero-sub">Har kuni 5 daqiqa bepul. Gaplash, his qil, savol ber — Aivo hamma narsani tushunadi.</p>
+
+  <div class="hero-cta">
+    <a href="app.html" class="btn-primary">
+      🎤 Bepul boshlash
+    </a>
+    <a href="#how" class="btn-ghost">Qanday ishlaydi ↓</a>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-mock">
+      <div class="mock-balance">
+        <span class="balance-dot"></span>
+        <span>Balans: 450 token</span>
+      </div>
+      <div class="mock-waves">
+        <div class="mock-wave"></div>
+        <div class="mock-wave"></div>
+        <div class="mock-wave"></div>
+        <div class="mock-wave"></div>
+        <div class="mock-wave"></div>
+      </div>
+      <div class="mock-btn">●</div>
+      <div class="mock-chat">
+        <div class="mock-msg user">Bugun juda charchadim...</div>
+        <div class="mock-msg ai">Voy, dam ol endi. Sen bu dunyoning eng charchagan odavisanmi? 😄 Gapir, eshitaman.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">7</div>
+    <div class="stat-label">Hissiyot aniqlaydi</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5 daq</div>
+    <div class="stat-label">Har kuni bepul</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Har doim tayyor</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Xotira saqlaydi</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-tag">Imkoniyatlar</div>
+  <h2>Oddiy chatbot emas —<br>haqiqiy do'st</h2>
+  <p class="section-sub">Aivo sening hissiyotingni tushunadi va unga mos javob beradi.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎤</div>
+      <div class="feature-title">Ovoz bilan gapirish</div>
+      <div class="feature-desc">Yozish shart emas. Bosib gapir — Aivo seni tushunadi va ovoz bilan javob beradi.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💜</div>
+      <div class="feature-title">Hissiyot aniqlash</div>
+      <div class="feature-desc">Quvonch, qaygu, charchoq, gazab — Aivo sening kayfiyatingni his qiladi va shunga mos gapiradi.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <div class="feature-title">Uzoq xotira</div>
+      <div class="feature-desc">Kecha nima gapirgan bo'lsang — bugun ham esida. Har kuni sifidan boshlash yo'q.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🇺🇿</div>
+      <div class="feature-title">O'zbek tilida</div>
+      <div class="feature-desc">Ona tilimizda, tabiiy va jonli. Robot emas — do'st kabi gapiradi.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🪙</div>
+      <div class="feature-title">Token tizimi</div>
+      <div class="feature-desc">Faqat ishlatganingcha to'laysan. Oylik obuna yo'q — keragingcha sotib ol.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Maxfiy va xavfsiz</div>
+      <div class="feature-desc">Suhbatlar faqat senikidir. Hech kim ko'rmaydi, hech yerga bermaydi.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-tag">Qanday ishlaydi</div>
+  <h2>4 qadamda<br>boshlash</h2>
+
+  <div class="how-grid">
+    <div class="how-step">
+      <h3>Ro'yxatdan o't</h3>
+      <p>Email bilan 30 soniyada akkount och. Karta kerak emas.</p>
+    </div>
+    <div class="how-step">
+      <h3>Bepul sinab ko'r</h3>
+      <p>Har kuni 5 daqiqa mutlaqo bepul. Xohlagan payt gapir.</p>
+    </div>
+    <div class="how-step">
+      <h3>Token sotib ol</h3>
+      <p>Ko'proq gapirmoqchi bo'lsang — qulay narxda token qo'sh.</p>
+    </div>
+    <div class="how-step">
+      <h3>Gaplash, o'sa</h3>
+      <p>Aivo seni eslab qoladi. Har kuni biroz yaxshiroq bo'ladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag">Narxlar</div>
+  <h2>Faqat ishlatganingcha<br>to'laysan</h2>
+  <p class="section-sub">Oylik obuna yo'q. Tokenlar tugamaguncha ishlayveradi.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tokens">100 <span>token</span></div>
+      <div class="price-usd">$0.99</div>
+      <ul class="price-features">
+        <li>~10 ta suhbat</li>
+        <li>Ovoz va matn</li>
+        <li>30 kun amal qiladi</li>
+      </ul>
+      <a href="app.html" class="btn-buy btn-buy-ghost">Sotib olish</a>
+    </div>
+
+    <div class="price-card popular">
+      <div class="popular-badge">⭐ Eng mashhur</div>
+      <div class="price-tokens">500 <span>token</span></div>
+      <div class="price-usd">$3.99</div>
+      <ul class="price-features">
+        <li>~50 ta suhbat</li>
+        <li>Ovoz va matn</li>
+        <li>90 kun amal qiladi</li>
+        <li>Xotira saqlash</li>
+      </ul>
+      <a href="app.html" class="btn-buy btn-buy-primary">Sotib olish</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tokens">1500 <span>token</span></div>
+      <div class="price-usd">$9.99</div>
+      <ul class="price-features">
+        <li>~150 ta suhbat</li>
+        <li>Ovoz va matn</li>
+        <li>180 kun amal qiladi</li>
+        <li>Xotira saqlash</li>
+        <li>Ustuvor javob</li>
+      </ul>
+      <a href="app.html" class="btn-buy btn-buy-ghost">Sotib olish</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tokens">5000 <span>token</span></div>
+      <div class="price-usd">$24.99</div>
+      <ul class="price-features">
+        <li>~500 ta suhbat</li>
+        <li>Ovoz va matn</li>
+        <li>1 yil amal qiladi</li>
+        <li>Xotira saqlash</li>
+        <li>Ustuvor javob</li>
+        <li>Maxsus ovoz tanlash</li>
+      </ul>
+      <a href="app.html" class="btn-buy btn-buy-ghost">Sotib olish</a>
+    </div>
+  </div>
+
+  <p style="margin-top:32px; color:var(--muted); font-size:13px;">
+    💡 1 token = taxminan 1 savol yoki 6 soniya ovoz. Har kuni 5 daqiqa bepul.
+  </p>
+</section>
+
+<!-- FREE BANNER -->
+<div class="free-banner">
+  <div class="blob blob-3"></div>
+  <h2>Bugun bepul boshlang</h2>
+  <p>Karta kerak emas. Ro'yxatdan o'tish 30 soniya. Birinchi 5 daqiqa bepul.</p>
+  <a href="app.html" class="btn-primary" style="display:inline-flex;">
+    🎤 Hoziroq boshlash
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Aivo</div>
+  <div class="footer-copy">© 2025 Aivo. Barcha huquqlar himoyalangan.</div>
+  <div class="footer-links">
+    <a href="#">Maxfiylik</a>
+    <a href="#">Shartlar</a>
+    <a href="#">Aloqa</a>
+  </div>
+</footer>
+
+</body>
+</html>
