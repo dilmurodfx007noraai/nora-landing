@@ -1,288 +1,773 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nora AI — Privacy Policy</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#080810;color:#f2f0ff;font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
-nav{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid rgba(255,255,255,0.07);background:rgba(8,8,16,0.95);}
-.nav-logo{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-link{color:#7c7a94;text-decoration:none;font-size:14px;transition:color 0.2s;}
-.nav-link:hover{color:#f2f0ff;}
-.container{max-width:760px;margin:0 auto;padding:64px 24px 120px;}
-h1{font-family:'Instrument Serif',serif;font-size:48px;font-style:italic;font-weight:400;letter-spacing:-1px;margin-bottom:8px;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.meta{color:#3a3855;font-size:13px;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.07);}
-h2{font-size:18px;font-weight:600;color:#f2f0ff;margin:40px 0 12px;letter-spacing:-0.02em;}
-h3{font-size:15px;font-weight:500;color:#a78bfa;margin:24px 0 8px;}
-p{color:#7c7a94;margin-bottom:14px;font-weight:300;}
-ul,ol{color:#7c7a94;margin-bottom:14px;padding-left:20px;font-weight:300;}
-li{margin-bottom:6px;}
-strong{color:#f2f0ff;font-weight:500;}
-.highlight{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.highlight p{margin:0;color:#c4bfff;}
-.warning{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.warning p{margin:0;color:#fca5a5;}
-.info{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.info p{margin:0;color:#6ee7b7;}
-a{color:#a78bfa;text-decoration:none;}
-a:hover{text-decoration:underline;}
-.toc{background:#0f0f1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;margin:32px 0;}
-.toc-title{font-size:13px;color:#3a3855;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;margin-bottom:14px;}
-.toc a{display:block;color:#7c7a94;font-size:14px;padding:4px 0;transition:color 0.2s;}
-.toc a:hover{color:#a78bfa;text-decoration:none;}
-footer{text-align:center;padding:40px;color:#3a3855;font-size:13px;border-top:1px solid rgba(255,255,255,0.07);}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Nora AI Voice Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --border: #1f1f23;
+      --text: #f2f0ff;
+      --text-muted: #a09db8;
+      --accent: #8b5cf6;
+      --accent-light: #a78bfa;
+      --accent-dim: rgba(139, 92, 246, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Top nav ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-orb {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, var(--accent-light), var(--accent));
+      box-shadow: 0 0 16px rgba(139, 92, 246, 0.5);
+      flex-shrink: 0;
+    }
+    .nav-brand span {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-light);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-back:hover { background: var(--accent-dim); border-color: var(--accent); }
+
+    /* ── Hero header ── */
+    .hero {
+      padding: 64px 24px 48px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .hero-meta strong { color: var(--text); }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; gap: 24px; }
+      .toc-wrap { display: none; }
+    }
+
+    /* ── Table of contents ── */
+    .toc-wrap {
+      position: sticky;
+      top: 70px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc a {
+      display: block;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--accent-light); }
+
+    /* ── Content ── */
+    .content section {
+      margin-bottom: 48px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin: 20px 0 8px;
+    }
+    p { color: var(--text-muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    li { color: var(--text-muted); margin-bottom: 6px; }
+    li strong { color: var(--text); }
+
+    /* ── Info / warning cards ── */
+    .card {
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .card-accent {
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+    .card-accent p { color: var(--text); }
+    .card-warn {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    .card-warn p { color: #fbbf24; }
+
+    /* ── Data table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    .data-table td:first-child { color: var(--text); font-weight: 500; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* ── Contact block ── */
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .contact-block a {
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--accent-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-<nav>
-  <div class="nav-logo">Nora</div>
-  <a href="terms.html" class="nav-link">Terms of Service →</a>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <a href="https://nora-landing-blue.vercel.app" class="nav-brand">
+    <div class="nav-orb"></div>
+    <span>Nora</span>
+  </a>
+  <a href="https://nora-landing-blue.vercel.app" class="nav-back">
+    &#8592; Back to site
+  </a>
 </nav>
 
-<div class="container">
-  <h1>Privacy Policy</h1>
-  <div class="meta">
-    Last updated: June 1, 2025 &nbsp;·&nbsp; Effective date: June 1, 2025 &nbsp;·&nbsp; Version 1.0
-  </div>
-
-  <div class="highlight">
-    <p><strong>Summary:</strong> We collect only what we need to provide the Nora service. We never sell your personal data. You have full control over your data and can delete it at any time. This policy complies with GDPR (EU), CCPA (California), COPPA (Children), and applicable laws worldwide.</p>
-  </div>
-
-  <div class="toc">
-    <div class="toc-title">Table of Contents</div>
-    <a href="#who-we-are">1. Who We Are</a>
-    <a href="#data-collected">2. Information We Collect</a>
-    <a href="#how-we-use">3. How We Use Your Information</a>
-    <a href="#voice-data">4. Voice Data & AI Processing</a>
-    <a href="#sharing">5. Data Sharing & Third Parties</a>
-    <a href="#storage">6. Data Storage & Security</a>
-    <a href="#retention">7. Data Retention</a>
-    <a href="#children">8. Children's Privacy (COPPA)</a>
-    <a href="#gdpr">9. EU/EEA Users (GDPR)</a>
-    <a href="#ccpa">10. California Users (CCPA)</a>
-    <a href="#rights">11. Your Rights</a>
-    <a href="#cookies">12. Cookies & Tracking</a>
-    <a href="#international">13. International Transfers</a>
-    <a href="#changes">14. Changes to This Policy</a>
-    <a href="#contact">15. Contact Us</a>
-  </div>
-
-  <h2 id="who-we-are">1. Who We Are</h2>
-  <p>Nora AI ("Company", "we", "us", "our") operates the Nora mobile application ("App") available on iOS and Android platforms. We are committed to protecting your privacy and handling your personal data responsibly.</p>
-  <p><strong>Data Controller:</strong> Nora AI</p>
-  <p><strong>Contact:</strong> <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a></p>
-  <p>By using the Nora App, you acknowledge that you have read, understood, and agree to this Privacy Policy. If you do not agree, please do not use our App.</p>
-
-  <h2 id="data-collected">2. Information We Collect</h2>
-
-  <h3>2.1 Information You Provide Directly</h3>
-  <ul>
-    <li><strong>Account information:</strong> Email address, name, and password when you register</li>
-    <li><strong>Profile settings:</strong> AI companion name, preferred voice, language, and mode preferences</li>
-    <li><strong>Conversation content:</strong> Text transcriptions of your voice conversations with Nora</li>
-    <li><strong>Reminders and journal entries:</strong> Content you create within the App</li>
-    <li><strong>Voice recordings:</strong> Audio captured during conversations (processed in real-time, not stored permanently — see Section 4)</li>
-    <li><strong>Cloned voice data:</strong> Voice model created if you purchase the Voice Clone feature</li>
-  </ul>
-
-  <h3>2.2 Information Collected Automatically</h3>
-  <ul>
-    <li><strong>Device information:</strong> Device type, operating system, app version, and device identifiers</li>
-    <li><strong>Usage data:</strong> Features used, session duration, message counts, and interaction patterns</li>
-    <li><strong>Performance data:</strong> Crash reports, error logs, and app performance metrics</li>
-    <li><strong>Network information:</strong> IP address (used for security and fraud prevention only)</li>
-  </ul>
-
-  <h3>2.3 Information We Do NOT Collect</h3>
-  <ul>
-    <li>Payment card information (handled exclusively by Apple/Google)</li>
-    <li>Precise geolocation data</li>
-    <li>Contacts, photos, or files on your device</li>
-    <li>Biometric data (other than voice for cloning, with explicit consent)</li>
-    <li>Data from other apps on your device</li>
-  </ul>
-
-  <h2 id="how-we-use">3. How We Use Your Information</h2>
-  <p>We use your information for the following purposes:</p>
-  <ul>
-    <li><strong>Service delivery:</strong> To provide, operate, and maintain the Nora App</li>
-    <li><strong>Personalization:</strong> To personalize your AI companion experience based on your preferences and history</li>
-    <li><strong>AI responses:</strong> To generate contextually relevant and emotionally intelligent responses</li>
-    <li><strong>Notifications:</strong> To send reminders and check-ins you have requested</li>
-    <li><strong>Security:</strong> To detect, prevent, and address fraud, abuse, and security incidents</li>
-    <li><strong>Improvement:</strong> To analyze usage patterns and improve our services (using anonymized/aggregated data only)</li>
-    <li><strong>Legal compliance:</strong> To comply with applicable laws and regulations</li>
-    <li><strong>Customer support:</strong> To respond to your inquiries and resolve issues</li>
-  </ul>
-
-  <div class="info">
-    <p>✅ <strong>We do not use your data for advertising purposes.</strong> We do not sell, rent, or share your personal data with advertisers or marketing companies.</p>
-  </div>
-
-  <h2 id="voice-data">4. Voice Data & AI Processing</h2>
-
-  <h3>4.1 Voice Recordings</h3>
-  <p>When you speak to Nora:</p>
-  <ul>
-    <li>Your voice is captured locally on your device</li>
-    <li>The audio is transmitted securely to our speech-to-text service (ElevenLabs) for transcription</li>
-    <li><strong>Audio recordings are deleted immediately after transcription</strong> — we do not store raw audio files</li>
-    <li>Only the text transcription is retained as part of your conversation history</li>
-  </ul>
-
-  <h3>4.2 AI Response Generation</h3>
-  <ul>
-    <li>Your conversation text is processed by our AI engine to generate responses</li>
-    <li>Conversations may include context from your previous interactions to provide memory features</li>
-    <li>AI processing occurs on secure third-party servers</li>
-  </ul>
-
-  <h3>4.3 Voice Cloning (Optional Feature)</h3>
-  <div class="warning">
-    <p>⚠️ <strong>Important Notice:</strong> By using the Voice Clone feature, you provide explicit consent to create a voice model based on your recording. You confirm that: (a) the voice you record is your own; (b) you are at least 18 years old or have parental consent; (c) you will not misuse the cloned voice for fraud, impersonation, or deception.</p>
-  </div>
-  <ul>
-    <li>Your voice sample (30–60 seconds) is sent to ElevenLabs to create a voice model</li>
-    <li>The voice model is stored on ElevenLabs servers and linked to your account</li>
-    <li>You can delete your cloned voice at any time in Settings → Voice Clone → Delete</li>
-    <li>Upon account deletion, your cloned voice model is permanently deleted within 30 days</li>
-  </ul>
-
-  <h2 id="sharing">5. Data Sharing & Third Parties</h2>
-  <p>We share your data only with the following categories of third parties, and only as necessary to provide our services:</p>
-
-  <h3>5.1 Service Providers</h3>
-  <ul>
-    <li><strong>Google Firebase</strong> — Authentication, database, and cloud infrastructure. <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
-    <li><strong>ElevenLabs</strong> — Voice synthesis, speech-to-text, and voice cloning. <a href="https://elevenlabs.io/privacy" target="_blank">Privacy Policy</a></li>
-    <li><strong>OpenAI</strong> — AI response generation. <a href="https://openai.com/policies/privacy-policy" target="_blank">Privacy Policy</a></li>
-    <li><strong>Apple / Google</strong> — App distribution and payment processing</li>
-    <li><strong>RevenueCat</strong> — Subscription management. <a href="https://www.revenuecat.com/privacy" target="_blank">Privacy Policy</a></li>
-  </ul>
-
-  <h3>5.2 Legal Requirements</h3>
-  <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., court orders, subpoenas).</p>
-
-  <h3>5.3 Business Transfers</h3>
-  <p>If Nora AI is involved in a merger, acquisition, or sale of assets, your data may be transferred. We will notify you before your data is transferred and becomes subject to a different privacy policy.</p>
-
-  <h3>5.4 What We Never Do</h3>
-  <ul>
-    <li>We never sell your personal data to third parties</li>
-    <li>We never share your data with advertisers</li>
-    <li>We never use your conversations for training AI models without explicit consent</li>
-  </ul>
-
-  <h2 id="storage">6. Data Storage & Security</h2>
-  <ul>
-    <li><strong>Location:</strong> Data is stored on Google Firebase servers located in the United States and European Union</li>
-    <li><strong>Encryption in transit:</strong> All data transmitted uses TLS 1.3 encryption</li>
-    <li><strong>Encryption at rest:</strong> All stored data is encrypted using AES-256</li>
-    <li><strong>Access controls:</strong> Only authorized personnel with a legitimate business need can access user data</li>
-    <li><strong>Security audits:</strong> We regularly review and update our security practices</li>
-    <li><strong>Breach notification:</strong> In the event of a data breach affecting your rights, we will notify you within 72 hours as required by GDPR</li>
-  </ul>
-
-  <h2 id="retention">7. Data Retention</h2>
-  <ul>
-    <li><strong>Account data:</strong> Retained until you delete your account</li>
-    <li><strong>Conversation history:</strong> Free plan — 3 days; Pro/Max plans — indefinitely until deleted</li>
-    <li><strong>Voice recordings:</strong> Deleted immediately after transcription (within seconds)</li>
-    <li><strong>Cloned voice model:</strong> Retained until you delete it or delete your account</li>
-    <li><strong>Usage logs:</strong> Retained for 90 days for security purposes</li>
-    <li><strong>After account deletion:</strong> All personal data is permanently deleted within 30 days, except where required by law</li>
-  </ul>
-
-  <h2 id="children">8. Children's Privacy (COPPA)</h2>
-  <p>Nora is available to users of all ages. Our Child Mode is specifically designed for children aged 6–12. We comply with the Children's Online Privacy Protection Act (COPPA) and similar international regulations.</p>
-  <ul>
-    <li><strong>Age requirement:</strong> Users under 13 require verifiable parental consent</li>
-    <li><strong>Child Mode:</strong> When enabled, all content is filtered to be age-appropriate; certain features are disabled</li>
-    <li><strong>Parental rights:</strong> Parents/guardians can review, modify, or delete their child's data by contacting us at <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a></li>
-    <li><strong>No behavioral advertising:</strong> We never use children's data for advertising purposes</li>
-    <li><strong>Voice data:</strong> We do not create voice clones for users under 18</li>
-    <li>If we discover we have collected data from a child under 13 without verifiable parental consent, we will delete it immediately</li>
-  </ul>
-
-  <h2 id="gdpr">9. EU/EEA Users (GDPR)</h2>
-  <p>If you are located in the European Union or European Economic Area, the following applies:</p>
-
-  <h3>9.1 Legal Basis for Processing</h3>
-  <ul>
-    <li><strong>Contract performance:</strong> Processing necessary to provide the Nora service you have requested</li>
-    <li><strong>Legitimate interests:</strong> Security, fraud prevention, and service improvement</li>
-    <li><strong>Consent:</strong> For voice cloning and optional features</li>
-    <li><strong>Legal obligation:</strong> When required by applicable law</li>
-  </ul>
-
-  <h3>9.2 Your GDPR Rights</h3>
-  <ul>
-    <li><strong>Right of access:</strong> Request a copy of your personal data</li>
-    <li><strong>Right to rectification:</strong> Correct inaccurate personal data</li>
-    <li><strong>Right to erasure:</strong> Request deletion of your personal data ("right to be forgotten")</li>
-    <li><strong>Right to restriction:</strong> Request restriction of processing</li>
-    <li><strong>Right to portability:</strong> Receive your data in a structured, machine-readable format</li>
-    <li><strong>Right to object:</strong> Object to processing based on legitimate interests</li>
-    <li><strong>Right to withdraw consent:</strong> Withdraw consent at any time without affecting prior processing</li>
-  </ul>
-  <p>To exercise these rights, contact us at <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a>. We will respond within 30 days. You also have the right to lodge a complaint with your local data protection authority.</p>
-
-  <h2 id="ccpa">10. California Users (CCPA)</h2>
-  <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with additional rights:</p>
-  <ul>
-    <li><strong>Right to know:</strong> What personal information we collect, use, disclose, and sell</li>
-    <li><strong>Right to delete:</strong> Request deletion of your personal information</li>
-    <li><strong>Right to opt-out:</strong> We do not sell personal information — no opt-out needed</li>
-    <li><strong>Right to non-discrimination:</strong> We will not discriminate against you for exercising your CCPA rights</li>
-  </ul>
-  <p>To submit a CCPA request, contact us at <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a></p>
-
-  <h2 id="rights">11. Your Rights (All Users)</h2>
-  <p>Regardless of your location, you have the following rights:</p>
-  <ul>
-    <li><strong>Access your data:</strong> Request a copy of all data we hold about you</li>
-    <li><strong>Delete your account:</strong> Go to Settings → Delete Account — all data deleted within 30 days</li>
-    <li><strong>Export your data:</strong> Request an export of your conversation history</li>
-    <li><strong>Correct your data:</strong> Update inaccurate information in Settings</li>
-    <li><strong>Disable notifications:</strong> Manage in Settings → Notifications at any time</li>
-    <li><strong>Delete cloned voice:</strong> Settings → Voice Clone → Delete at any time</li>
-    <li><strong>Opt out of analytics:</strong> Contact us to opt out of usage analytics</li>
-  </ul>
-
-  <h2 id="cookies">12. Cookies & Tracking</h2>
-  <p>The Nora mobile app does not use cookies. Our website (nora-ai.org) may use essential cookies for functionality. We do not use tracking pixels, third-party advertising cookies, or cross-site tracking technologies.</p>
-
-  <h2 id="international">13. International Data Transfers</h2>
-  <p>Nora is a global service. Your data may be processed in the United States and European Union. We ensure appropriate safeguards are in place for international transfers, including:</p>
-  <ul>
-    <li>Standard Contractual Clauses (SCCs) approved by the European Commission</li>
-    <li>Data processing agreements with all third-party service providers</li>
-    <li>Compliance with applicable data transfer regulations</li>
-  </ul>
-
-  <h2 id="changes">14. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will notify you of material changes by:</p>
-  <ul>
-    <li>Sending a notification through the App</li>
-    <li>Emailing you at the address associated with your account</li>
-    <li>Updating the "Last updated" date at the top of this policy</li>
-  </ul>
-  <p>Your continued use of the App after changes become effective constitutes acceptance of the revised policy. If you do not agree to the changes, you must stop using the App and delete your account.</p>
-
-  <h2 id="contact">15. Contact Us</h2>
-  <p>For privacy-related inquiries, requests, or complaints:</p>
-  <ul>
-    <li><strong>Email:</strong> <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a></li>
-    <li><strong>Website:</strong> <a href="https://nora-ai.org" target="_blank">nora-ai.org</a></li>
-    <li><strong>Response time:</strong> We aim to respond within 5 business days</li>
-  </ul>
-  <p>For GDPR-related requests, we will respond within 30 days as required by law.</p>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Legal Document</div>
+  <h1>Privacy <span>Policy</span></h1>
+  <p class="hero-meta">
+    <strong>Nora AI Voice Companion</strong> &nbsp;|&nbsp;
+    Last updated: <strong>June 7, 2026</strong> &nbsp;|&nbsp;
+    Effective: <strong>June 7, 2026</strong>
+  </p>
 </div>
 
-<footer>© 2025 Nora AI. All rights reserved. · <a href="terms.html" style="color:#3a3855;">Terms of Service</a></footer>
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Sidebar TOC -->
+  <aside class="toc-wrap">
+    <div class="toc-title">Contents</div>
+    <nav class="toc">
+      <a href="#s1">1. Introduction</a>
+      <a href="#s2">2. Data We Collect</a>
+      <a href="#s3">3. Voice &amp; Audio Data</a>
+      <a href="#s4">4. How We Use Your Data</a>
+      <a href="#s5">5. Third-Party Services</a>
+      <a href="#s6">6. Data Sharing</a>
+      <a href="#s7">7. Data Retention</a>
+      <a href="#s8">8. Your Rights</a>
+      <a href="#s9">9. GDPR Rights</a>
+      <a href="#s10">10. Children's Privacy</a>
+      <a href="#s11">11. Security</a>
+      <a href="#s12">12. International Transfers</a>
+      <a href="#s13">13. Push Notifications</a>
+      <a href="#s14">14. Cookies &amp; Analytics</a>
+      <a href="#s15">15. Changes to Policy</a>
+      <a href="#s16">16. Contact Us</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <div class="card card-accent">
+      <p><strong>Summary:</strong> Nora collects voice audio, conversation transcripts, and account information to deliver AI voice companion services. We do not sell your personal data. You can delete your data at any time. Voice clones are stored securely and used only for your personal voice synthesis.</p>
+    </div>
+
+    <!-- 1 -->
+    <section id="s1">
+      <div class="section-header">
+        <span class="section-num">1</span>
+        <h2>Introduction</h2>
+      </div>
+      <p>Welcome to <strong>Nora AI Voice Companion</strong> ("Nora," "we," "us," or "our"). This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you use our mobile application (package ID: <strong>com.nora.ai</strong>) and related services (collectively, the "Service").</p>
+      <p>By accessing or using the Service, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access or use the Service.</p>
+      <p>This Policy applies to all users worldwide. Additional rights may apply depending on your jurisdiction; see Section 9 for GDPR-specific rights and Section 8 for general data rights.</p>
+    </section>
+
+    <!-- 2 -->
+    <section id="s2">
+      <div class="section-header">
+        <span class="section-num">2</span>
+        <h2>Data We Collect</h2>
+      </div>
+      <p>We collect the following categories of information:</p>
+
+      <h3>2.1 Account Information</h3>
+      <ul>
+        <li><strong>Email address</strong> — used for account creation, authentication, and service communications.</li>
+        <li><strong>Password</strong> — stored as a cryptographic hash; we never store plain-text passwords.</li>
+        <li><strong>Account preferences</strong> — language settings, notification preferences, subscription tier.</li>
+      </ul>
+
+      <h3>2.2 Voice and Audio Data</h3>
+      <ul>
+        <li><strong>Voice recordings</strong> — audio captured during conversations with Nora for transcription and AI response generation.</li>
+        <li><strong>Voice clone samples</strong> — audio recordings voluntarily submitted by you to clone your voice for personalized speech synthesis.</li>
+        <li><strong>Transcripts</strong> — text transcriptions of your spoken input produced by OpenAI Whisper.</li>
+      </ul>
+
+      <h3>2.3 Conversation Data</h3>
+      <ul>
+        <li><strong>Conversation history</strong> — full text records of your exchanges with the AI, stored in Firebase Firestore.</li>
+        <li><strong>Journal summaries</strong> — AI-generated weekly summaries derived from your conversation history.</li>
+        <li><strong>Emotional tone indicators</strong> — metadata inferred from the content of your conversations (not raw audio analysis).</li>
+      </ul>
+
+      <h3>2.4 Device and Technical Data</h3>
+      <ul>
+        <li><strong>Device identifiers</strong> — push notification tokens, device OS version, app version.</li>
+        <li><strong>Usage data</strong> — session duration, features used, credit consumption, error logs.</li>
+        <li><strong>IP address</strong> — logged by Firebase and third-party services for security and fraud prevention.</li>
+      </ul>
+
+      <h3>2.5 Payment Data</h3>
+      <p>Subscription and payment transactions are processed entirely by <strong>Apple App Store</strong> and <strong>Google Play Store</strong> through <strong>RevenueCat</strong>. We do not receive, process, or store your credit card numbers, bank account details, or other primary payment credentials. We receive only subscription status, tier, and anonymized transaction identifiers from RevenueCat.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Data Type</th><th>Purpose</th><th>Stored Where</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Email &amp; password hash</td><td>Authentication</td><td>Firebase Auth</td></tr>
+          <tr><td>Conversation history</td><td>AI context, journal</td><td>Firebase Firestore</td></tr>
+          <tr><td>Voice clone samples</td><td>Voice synthesis</td><td>RunPod GPU servers</td></tr>
+          <tr><td>Transcripts</td><td>AI processing</td><td>Firebase Firestore</td></tr>
+          <tr><td>Subscription status</td><td>Feature gating</td><td>RevenueCat + Firestore</td></tr>
+          <tr><td>Push tokens</td><td>Reminders</td><td>Firebase Cloud Messaging</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 3 -->
+    <section id="s3">
+      <div class="section-header">
+        <span class="section-num">3</span>
+        <h2>Voice &amp; Audio Data — Important Notice</h2>
+      </div>
+
+      <div class="card card-accent">
+        <p><strong>Your voice is yours.</strong> We take extraordinary care with voice data because it is uniquely personal and potentially sensitive biometric information.</p>
+      </div>
+
+      <h3>3.1 How Voice Recordings Are Used</h3>
+      <p>Each time you speak to Nora, your audio is transmitted securely to our servers (or directly to OpenAI Whisper) for transcription only. <strong>Live conversation audio is not stored permanently</strong> — only the resulting text transcript is retained in your conversation history. Raw audio from individual conversation turns is discarded after transcription is complete.</p>
+
+      <h3>3.2 Voice Clone Samples</h3>
+      <ul>
+        <li>Voice clone samples are transmitted to and stored on <strong>RunPod GPU infrastructure</strong> solely for the purpose of synthesizing speech that sounds like your voice.</li>
+        <li>Voice models derived from your samples are associated exclusively with your account identifier.</li>
+        <li>Your voice model is <strong>never used</strong> to generate speech for any other user, shared with third parties, or used for any purpose other than generating audio responses in your personal Nora session.</li>
+        <li>Voice clone data is <strong>not used to train AI models</strong>, improve Nora's general capabilities, or for any commercial purpose beyond powering your personal voice synthesis feature.</li>
+      </ul>
+
+      <h3>3.3 Voice Sharing Feature</h3>
+      <p>If you choose to share your voice with a friend via a sharing code, you explicitly authorize that specific friend's account to use your voice model for their Nora sessions. You may revoke this permission at any time through the app, which immediately removes access.</p>
+
+      <h3>3.4 Deleting Voice Data</h3>
+      <p>You can delete your voice clone at any time through <strong>Settings → Voice Clone → Delete Voice</strong>. Upon deletion, we will remove your voice samples and derived voice model from RunPod servers within <strong>30 days</strong>. We will send you a confirmation email when deletion is complete.</p>
+
+      <h3>3.5 Emotion Detection</h3>
+      <p>Nora may infer emotional context from the <strong>text content</strong> of your conversations (e.g., detecting sadness from words used) to adjust response tone. This analysis is performed using the AI language model and is not based on acoustic voice analysis. Emotional metadata is stored alongside conversation records and is subject to the same deletion rights as all other conversation data.</p>
+    </section>
+
+    <!-- 4 -->
+    <section id="s4">
+      <div class="section-header">
+        <span class="section-num">4</span>
+        <h2>How We Use Your Data</h2>
+      </div>
+      <p>We use collected data for the following purposes, each grounded in a lawful basis:</p>
+
+      <h3>4.1 Providing the Service (Contract Performance)</h3>
+      <ul>
+        <li>Transcribing your voice input to text.</li>
+        <li>Generating AI responses to your messages.</li>
+        <li>Synthesizing speech using text-to-speech or your cloned voice.</li>
+        <li>Storing conversation history so the AI can maintain context.</li>
+        <li>Generating weekly journal summaries from your conversations.</li>
+        <li>Scheduling push notification reminders you request during conversations.</li>
+        <li>Enforcing subscription tier limits (daily credits).</li>
+      </ul>
+
+      <h3>4.2 Account Management (Contract Performance)</h3>
+      <ul>
+        <li>Creating and authenticating your account.</li>
+        <li>Sending email verification and password reset emails.</li>
+        <li>Processing subscription status changes.</li>
+      </ul>
+
+      <h3>4.3 Safety and Legal Compliance (Legitimate Interest / Legal Obligation)</h3>
+      <ul>
+        <li>Detecting and preventing fraud, abuse, and violations of our Terms of Service.</li>
+        <li>Responding to legal requests from law enforcement or courts.</li>
+        <li>Protecting the rights, property, and safety of Nora, its users, and the public.</li>
+      </ul>
+
+      <h3>4.4 Service Improvement (Legitimate Interest)</h3>
+      <p>We may use <strong>anonymized and aggregated</strong> data (never linked to your identity) to understand usage patterns, improve app performance, and develop new features. We will not use your identifiable voice recordings or conversation content for AI model training without your explicit, separate opt-in consent.</p>
+
+      <h3>4.5 Communications (Consent / Legitimate Interest)</h3>
+      <ul>
+        <li>Sending service-critical notifications (account changes, security alerts).</li>
+        <li>Sending push notification reminders you have explicitly scheduled through the app.</li>
+        <li>Occasional product updates — you may opt out at any time.</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section id="s5">
+      <div class="section-header">
+        <span class="section-num">5</span>
+        <h2>Third-Party Services</h2>
+      </div>
+      <p>Nora relies on the following third-party services to operate. Each has its own privacy policy and data processing practices. By using Nora, you acknowledge that your data may be transmitted to and processed by these services as described below.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Service</th><th>Provider</th><th>Data Shared</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Whisper API</td>
+            <td>OpenAI, Inc.</td>
+            <td>Voice audio</td>
+            <td>Speech-to-text transcription</td>
+          </tr>
+          <tr>
+            <td>GPT-4o-mini API</td>
+            <td>OpenAI, Inc.</td>
+            <td>Conversation text</td>
+            <td>AI responses (FREE tier)</td>
+          </tr>
+          <tr>
+            <td>Claude Haiku API</td>
+            <td>Anthropic, PBC</td>
+            <td>Conversation text</td>
+            <td>AI responses (PRO/MAX tiers)</td>
+          </tr>
+          <tr>
+            <td>Firebase (Auth + Firestore)</td>
+            <td>Google LLC</td>
+            <td>Email, user data, conversations</td>
+            <td>Authentication, database</td>
+          </tr>
+          <tr>
+            <td>Firebase Cloud Messaging</td>
+            <td>Google LLC</td>
+            <td>Push tokens, notification content</td>
+            <td>Push notifications / reminders</td>
+          </tr>
+          <tr>
+            <td>RunPod GPU Servers</td>
+            <td>RunPod, Inc.</td>
+            <td>Voice samples, audio requests</td>
+            <td>Voice synthesis (XTTS-v2) &amp; clone storage</td>
+          </tr>
+          <tr>
+            <td>RevenueCat</td>
+            <td>RevenueCat, Inc.</td>
+            <td>User ID, subscription events</td>
+            <td>Subscription management</td>
+          </tr>
+          <tr>
+            <td>Expo / EAS</td>
+            <td>Expo (by Meta Platforms / independent)</td>
+            <td>App builds, OTA update metadata</td>
+            <td>App delivery and updates</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5.1 OpenAI</h3>
+      <p>Your voice audio and conversation text are transmitted to OpenAI's API. OpenAI's data handling is governed by the <a href="https://openai.com/privacy" style="color:var(--accent-light);">OpenAI Privacy Policy</a> and their API data usage policies. As of the date of this policy, OpenAI does not use API inputs/outputs to train its models by default.</p>
+
+      <h3>5.2 Anthropic</h3>
+      <p>PRO and MAX tier conversations are processed by Anthropic's Claude API. Anthropic's data handling is governed by the <a href="https://www.anthropic.com/privacy" style="color:var(--accent-light);">Anthropic Privacy Policy</a>.</p>
+
+      <h3>5.3 Google Firebase</h3>
+      <p>Firebase services (hosted in the United States) process authentication and store your conversation history and user profile. Firebase is governed by Google's privacy terms and the Google Cloud Data Processing Addendum, which includes Standard Contractual Clauses for international data transfers.</p>
+
+      <h3>5.4 RunPod</h3>
+      <p>Voice clone samples and TTS (text-to-speech) requests are processed on RunPod serverless GPU infrastructure. RunPod data centers are located in the United States. Your voice data on RunPod is isolated to your account and not accessible to other RunPod customers.</p>
+
+      <h3>5.5 RevenueCat</h3>
+      <p>RevenueCat manages subscription state on our behalf. RevenueCat receives your app store customer ID and subscription events. RevenueCat does not receive payment card details. See the <a href="https://www.revenuecat.com/privacy" style="color:var(--accent-light);">RevenueCat Privacy Policy</a>.</p>
+    </section>
+
+    <!-- 6 -->
+    <section id="s6">
+      <div class="section-header">
+        <span class="section-num">6</span>
+        <h2>Data Sharing and Disclosure</h2>
+      </div>
+      <p><strong>We do not sell, rent, or trade your personal data to third parties for their marketing purposes.</strong> We disclose data only in the following circumstances:</p>
+      <ul>
+        <li><strong>Service providers:</strong> As listed in Section 5, we share data with vendors that process it on our behalf under data processing agreements.</li>
+        <li><strong>Legal requirements:</strong> We may disclose data if required by law, subpoena, court order, or other legal process, or if we believe disclosure is necessary to prevent harm or protect rights.</li>
+        <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of all or substantially all assets, your data may be transferred. We will notify you via email and/or a prominent in-app notice at least 30 days prior to any such transfer, and your continued use of the Service will constitute consent.</li>
+        <li><strong>With your explicit consent:</strong> We may share data for purposes not covered here with your explicit prior consent (e.g., voice sharing feature described in Section 3.3).</li>
+        <li><strong>Aggregated/anonymized data:</strong> We may share de-identified, aggregated statistics (e.g., "X% of users set daily reminders") that cannot reasonably be used to identify you.</li>
+      </ul>
+    </section>
+
+    <!-- 7 -->
+    <section id="s7">
+      <div class="section-header">
+        <span class="section-num">7</span>
+        <h2>Data Retention and Deletion</h2>
+      </div>
+
+      <h3>7.1 Retention Periods</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Data Category</th><th>Retention Period</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Active account data</td><td>For the lifetime of your account</td></tr>
+          <tr><td>Conversation history</td><td>For the lifetime of your account, or until you delete it in-app</td></tr>
+          <tr><td>Voice clone samples &amp; model</td><td>Until you delete via Settings, then removed within 30 days</td></tr>
+          <tr><td>Raw voice recordings (per turn)</td><td>Discarded immediately after transcription; not retained</td></tr>
+          <tr><td>Server logs (IP, errors)</td><td>Up to 90 days for security/debugging purposes</td></tr>
+          <tr><td>Account data after deletion</td><td>Up to 60 days in backup systems, then permanently purged</td></tr>
+          <tr><td>Payment transaction records</td><td>7 years (legal/tax compliance requirement)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.2 Account Deletion</h3>
+      <p>You may delete your Nora account at any time via <strong>Settings → Account → Delete Account</strong>, or by emailing <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a> with the subject "Delete My Account." Upon account deletion:</p>
+      <ul>
+        <li>Your email, display name, and profile data will be deleted from Firebase Auth.</li>
+        <li>Your conversation history and user document will be deleted from Firestore.</li>
+        <li>Your voice clone samples and model will be queued for deletion from RunPod (completed within 30 days).</li>
+        <li>We will confirm deletion by email within 10 business days of your request.</li>
+        <li>Anonymized, aggregated data derived from your usage (with no link to your identity) may be retained.</li>
+        <li>Financial transaction records required for tax compliance will be retained per applicable law.</li>
+      </ul>
+    </section>
+
+    <!-- 8 -->
+    <section id="s8">
+      <div class="section-header">
+        <span class="section-num">8</span>
+        <h2>Your Rights</h2>
+      </div>
+      <p>Regardless of your location, you have the following rights with respect to your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Request that inaccurate data be corrected.</li>
+        <li><strong>Deletion:</strong> Request deletion of your personal data (subject to legal retention obligations).</li>
+        <li><strong>Data Portability:</strong> Request your conversation history and profile data in a machine-readable format (JSON).</li>
+        <li><strong>Opt-out of communications:</strong> Unsubscribe from non-essential communications at any time.</li>
+        <li><strong>Withdraw consent:</strong> Where processing is based on consent, you may withdraw that consent at any time without affecting the lawfulness of processing prior to withdrawal.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a>. We will respond within <strong>30 days</strong>. We may require identity verification before processing sensitive requests.</p>
+    </section>
+
+    <!-- 9 -->
+    <section id="s9">
+      <div class="section-header">
+        <span class="section-num">9</span>
+        <h2>GDPR Rights (EEA, UK &amp; Switzerland)</h2>
+      </div>
+      <p>If you are located in the European Economic Area, the United Kingdom, or Switzerland, you have additional rights under the General Data Protection Regulation (GDPR) or equivalent legislation:</p>
+
+      <h3>9.1 Legal Bases for Processing</h3>
+      <ul>
+        <li><strong>Contract Performance (Art. 6(1)(b)):</strong> Processing necessary to provide the Service you signed up for.</li>
+        <li><strong>Legitimate Interests (Art. 6(1)(f)):</strong> Security, fraud prevention, service improvement (where balanced against your rights).</li>
+        <li><strong>Legal Obligation (Art. 6(1)(c)):</strong> Compliance with applicable laws (e.g., financial record retention).</li>
+        <li><strong>Consent (Art. 6(1)(a)):</strong> Marketing communications, optional feature enhancements — withdrawable at any time.</li>
+      </ul>
+
+      <h3>9.2 Additional GDPR Rights</h3>
+      <ul>
+        <li><strong>Right to restriction of processing (Art. 18)</strong></li>
+        <li><strong>Right to object to processing based on legitimate interests (Art. 21)</strong></li>
+        <li><strong>Right not to be subject to solely automated decision-making with legal effects (Art. 22)</strong> — Note: AI responses from Nora do not constitute automated decisions with legal or similarly significant effects.</li>
+        <li><strong>Right to lodge a complaint with a supervisory authority</strong> — You have the right to complain to your local data protection authority if you believe we have violated your rights.</li>
+      </ul>
+
+      <h3>9.3 International Data Transfers</h3>
+      <p>See Section 12 below for details on international transfers and the safeguards we rely on.</p>
+    </section>
+
+    <!-- 10 -->
+    <section id="s10">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Children's Privacy</h2>
+      </div>
+      <div class="card card-warn">
+        <p><strong>Nora is not intended for children under the age of 13.</strong> We do not knowingly collect personal information from children under 13.</p>
+      </div>
+      <p>In certain jurisdictions (e.g., where age of digital consent is higher), Nora may require users to be at least <strong>16 or 17 years of age</strong>. Users should comply with the age requirements applicable in their jurisdiction.</p>
+      <p>If you are a parent or guardian and believe your child under 13 has created an account or provided personal data to us, please contact us immediately at <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a>. We will promptly delete the child's account and all associated data upon verification.</p>
+      <p>We rely on users to accurately represent their age during account registration. If we become aware that a user is under the minimum age, we will suspend and delete the account without prior notice.</p>
+    </section>
+
+    <!-- 11 -->
+    <section id="s11">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>Security Measures</h2>
+      </div>
+      <p>We implement industry-standard technical and organizational security measures to protect your data, including:</p>
+      <ul>
+        <li><strong>Encryption in transit:</strong> All data transmitted between your device and our servers uses TLS 1.2 or higher (HTTPS).</li>
+        <li><strong>Encryption at rest:</strong> Firebase Firestore and Firebase Auth data are encrypted at rest by Google.</li>
+        <li><strong>Access controls:</strong> Database access is restricted by Firebase Security Rules; only your authenticated user ID can read your own data.</li>
+        <li><strong>API key security:</strong> Server-side API keys (OpenAI, Anthropic, RunPod) are stored as environment variables on server infrastructure, not exposed to clients.</li>
+        <li><strong>Secure password hashing:</strong> Passwords are hashed using Firebase Auth's built-in bcrypt-based system.</li>
+        <li><strong>Isolated voice data:</strong> Voice clone models on RunPod are keyed to user account identifiers and not accessible across accounts.</li>
+      </ul>
+
+      <div class="card card-warn">
+        <p><strong>Important limitation:</strong> No security system is impenetrable. We cannot guarantee absolute security of your data. In the event of a data breach affecting your personal information, we will notify affected users within <strong>72 hours</strong> of becoming aware of the breach (to the extent practicable and required by applicable law), and provide guidance on protective steps.</p>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="s12">
+      <div class="section-header">
+        <span class="section-num">12</span>
+        <h2>International Data Transfers</h2>
+      </div>
+      <p>Nora is operated globally. Your data is processed and stored on servers located primarily in the <strong>United States</strong> (Firebase/Google, RunPod, OpenAI, Anthropic, RevenueCat). If you are located outside the United States, your data will be transferred to, processed, and stored in the United States and potentially other countries that may not provide the same level of data protection as your home country.</p>
+      <p>For transfers from the EEA, UK, or Switzerland to the United States, we rely on:</p>
+      <ul>
+        <li><strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission, incorporated into our agreements with Google (Firebase), OpenAI, Anthropic, and RevenueCat where applicable.</li>
+        <li><strong>Adequacy decisions</strong> where applicable.</li>
+        <li>The legitimate interests of providing a globally available service, balanced against appropriate safeguards.</li>
+      </ul>
+      <p>By using Nora, you consent to the transfer of your personal data to the United States and other countries for the purposes described in this Privacy Policy.</p>
+    </section>
+
+    <!-- 13 -->
+    <section id="s13">
+      <div class="section-header">
+        <span class="section-num">13</span>
+        <h2>Push Notifications and Reminders</h2>
+      </div>
+      <p>Nora may send push notifications and reminders that you explicitly schedule during conversations (e.g., "remind me to meditate at 8 PM"). Push notification tokens (device identifiers) are stored in Firebase Cloud Messaging and linked to your account.</p>
+      <p>You may disable push notifications at any time through your device's system settings or through <strong>Settings → Notifications</strong> in the app. Disabling notifications will prevent delivery of reminders you have set, but will not affect the rest of the Service.</p>
+    </section>
+
+    <!-- 14 -->
+    <section id="s14">
+      <div class="section-header">
+        <span class="section-num">14</span>
+        <h2>Cookies and Analytics</h2>
+      </div>
+      <p>The Nora mobile app does not use browser cookies. The app may use device-local storage (AsyncStorage) to cache session tokens and preferences for performance. This local data is not transmitted to third parties.</p>
+      <p>Firebase and third-party SDKs may collect anonymous usage analytics. Where required by applicable law, we will seek your consent for analytics collection that goes beyond what is strictly necessary for service operation.</p>
+    </section>
+
+    <!-- 15 -->
+    <section id="s15">
+      <div class="section-header">
+        <span class="section-num">15</span>
+        <h2>Changes to This Privacy Policy</h2>
+      </div>
+      <p>We may update this Privacy Policy from time to time. When we make material changes, we will:</p>
+      <ul>
+        <li>Update the "Last updated" date at the top of this page.</li>
+        <li>Send an in-app notification and/or email to registered users at least <strong>14 days</strong> before material changes take effect.</li>
+        <li>For significant changes affecting how we use voice data or sensitive information, we will request renewed consent where required by law.</li>
+      </ul>
+      <p>Your continued use of the Service after the effective date of the updated Privacy Policy constitutes acceptance of the changes. If you disagree with the updated policy, please delete your account before the effective date.</p>
+    </section>
+
+    <!-- 16 -->
+    <section id="s16">
+      <div class="section-header">
+        <span class="section-num">16</span>
+        <h2>Contact Us</h2>
+      </div>
+      <div class="contact-block">
+        <p><strong>Data Controller / Developer</strong></p>
+        <p>Nora AI Voice Companion<br />
+        Individual Developer</p>
+        <br />
+        <p><strong>Email:</strong> <a href="mailto:dilmurodshukurullayev75@gmail.com">dilmurodshukurullayev75@gmail.com</a></p>
+        <p><strong>Website:</strong> <a href="https://nora-landing-blue.vercel.app">https://nora-landing-blue.vercel.app</a></p>
+        <p><strong>App:</strong> com.nora.ai</p>
+        <br />
+        <p>For data access requests, deletion requests, or privacy concerns, please email the address above with the subject line <strong>"Privacy Request — [Your Request Type]"</strong>. We will acknowledge your request within <strong>5 business days</strong> and complete it within <strong>30 days</strong>.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>
+    &copy; 2026 Nora AI Voice Companion &nbsp;|&nbsp;
+    <a href="https://nora-landing-blue.vercel.app">Home</a> &nbsp;|&nbsp;
+    <a href="nora_terms_of_service.html">Terms of Service</a> &nbsp;|&nbsp;
+    <a href="mailto:dilmurodshukurullayev75@gmail.com">Contact</a>
+  </p>
+  <p style="margin-top:8px;">Last updated: June 7, 2026</p>
+</footer>
+
 </body>
 </html>

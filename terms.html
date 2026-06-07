@@ -1,300 +1,836 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nora AI — Terms of Service</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#080810;color:#f2f0ff;font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
-nav{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid rgba(255,255,255,0.07);background:rgba(8,8,16,0.95);}
-.nav-logo{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-link{color:#7c7a94;text-decoration:none;font-size:14px;}
-.nav-link:hover{color:#f2f0ff;}
-.container{max-width:760px;margin:0 auto;padding:64px 24px 120px;}
-h1{font-family:'Instrument Serif',serif;font-size:48px;font-style:italic;font-weight:400;letter-spacing:-1px;margin-bottom:8px;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.meta{color:#3a3855;font-size:13px;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.07);}
-h2{font-size:18px;font-weight:600;color:#f2f0ff;margin:40px 0 12px;letter-spacing:-0.02em;}
-h3{font-size:15px;font-weight:500;color:#a78bfa;margin:24px 0 8px;}
-p{color:#7c7a94;margin-bottom:14px;font-weight:300;}
-ul,ol{color:#7c7a94;margin-bottom:14px;padding-left:20px;font-weight:300;}
-li{margin-bottom:6px;}
-strong{color:#f2f0ff;font-weight:500;}
-.highlight{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.highlight p{margin:0;color:#c4bfff;}
-.warning{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.warning p{margin:0;color:#fca5a5;}
-.info{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
-.info p{margin:0;color:#6ee7b7;}
-a{color:#a78bfa;text-decoration:none;}
-a:hover{text-decoration:underline;}
-.toc{background:#0f0f1a;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;margin:32px 0;}
-.toc-title{font-size:13px;color:#3a3855;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;margin-bottom:14px;}
-.toc a{display:block;color:#7c7a94;font-size:14px;padding:4px 0;transition:color 0.2s;}
-.toc a:hover{color:#a78bfa;text-decoration:none;}
-footer{text-align:center;padding:40px;color:#3a3855;font-size:13px;border-top:1px solid rgba(255,255,255,0.07);}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Nora AI Voice Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --border: #1f1f23;
+      --text: #f2f0ff;
+      --text-muted: #a09db8;
+      --accent: #8b5cf6;
+      --accent-light: #a78bfa;
+      --accent-dim: rgba(139, 92, 246, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Top nav ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-orb {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, var(--accent-light), var(--accent));
+      box-shadow: 0 0 16px rgba(139, 92, 246, 0.5);
+      flex-shrink: 0;
+    }
+    .nav-brand span {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-light);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-back:hover { background: var(--accent-dim); border-color: var(--accent); }
+
+    /* ── Hero header ── */
+    .hero {
+      padding: 64px 24px 48px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .hero-meta strong { color: var(--text); }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; gap: 24px; }
+      .toc-wrap { display: none; }
+    }
+
+    /* ── Table of contents ── */
+    .toc-wrap {
+      position: sticky;
+      top: 70px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc a {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--accent-light); }
+
+    /* ── Content ── */
+    .content section {
+      margin-bottom: 48px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin: 20px 0 8px;
+    }
+    p { color: var(--text-muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    li { color: var(--text-muted); margin-bottom: 6px; }
+    li strong { color: var(--text); }
+
+    /* ── Info / warning / danger cards ── */
+    .card {
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .card-accent {
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+    .card-accent p { color: var(--text); }
+    .card-warn {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    .card-warn p { color: #fbbf24; }
+    .card-danger {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .card-danger p { color: #f87171; }
+
+    /* ── Highlighted legal block ── */
+    .legal-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .legal-block p { color: var(--text); font-size: 15px; }
+
+    /* ── Contact block ── */
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .contact-block a {
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--accent-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-<nav>
-  <div class="nav-logo">Nora</div>
-  <a href="privacy-policy.html" class="nav-link">← Privacy Policy</a>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <a href="https://nora-landing-blue.vercel.app" class="nav-brand">
+    <div class="nav-orb"></div>
+    <span>Nora</span>
+  </a>
+  <a href="https://nora-landing-blue.vercel.app" class="nav-back">
+    &#8592; Back to site
+  </a>
 </nav>
 
-<div class="container">
-  <h1>Terms of Service</h1>
-  <div class="meta">
-    Last updated: June 1, 2025 &nbsp;·&nbsp; Effective date: June 1, 2025 &nbsp;·&nbsp; Version 1.0
-  </div>
-
-  <div class="highlight">
-    <p><strong>Please read these Terms carefully.</strong> By downloading, installing, or using the Nora app, you agree to be bound by these Terms of Service. If you do not agree, do not use our App.</p>
-  </div>
-
-  <div class="toc">
-    <div class="toc-title">Table of Contents</div>
-    <a href="#acceptance">1. Acceptance of Terms</a>
-    <a href="#eligibility">2. Eligibility</a>
-    <a href="#service">3. Description of Service</a>
-    <a href="#accounts">4. Accounts & Registration</a>
-    <a href="#subscriptions">5. Subscriptions & Payments</a>
-    <a href="#voice-clone">6. Voice Clone Terms</a>
-    <a href="#acceptable-use">7. Acceptable Use Policy</a>
-    <a href="#intellectual-property">8. Intellectual Property</a>
-    <a href="#ai-disclaimer">9. AI Disclaimer</a>
-    <a href="#children">10. Minors & Child Mode</a>
-    <a href="#privacy">11. Privacy</a>
-    <a href="#termination">12. Termination</a>
-    <a href="#disclaimers">13. Disclaimers</a>
-    <a href="#liability">14. Limitation of Liability</a>
-    <a href="#indemnification">15. Indemnification</a>
-    <a href="#disputes">16. Dispute Resolution</a>
-    <a href="#governing-law">17. Governing Law</a>
-    <a href="#changes">18. Changes to Terms</a>
-    <a href="#contact">19. Contact</a>
-  </div>
-
-  <h2 id="acceptance">1. Acceptance of Terms</h2>
-  <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you") and Nora AI ("Company", "we", "us") governing your use of the Nora mobile application ("App") and related services.</p>
-  <p>By accessing or using the App, you confirm that you have read, understood, and agree to be bound by these Terms and our <a href="privacy-policy.html">Privacy Policy</a>, which is incorporated herein by reference.</p>
-
-  <h2 id="eligibility">2. Eligibility</h2>
-  <ul>
-    <li>You must be at least <strong>13 years old</strong> to use the App</li>
-    <li>Users between 13 and 18 require parental or guardian consent</li>
-    <li>You must have the legal capacity to enter into binding agreements</li>
-    <li>You must not be prohibited from using the App under applicable laws</li>
-    <li>One account per person — creating multiple accounts is prohibited</li>
-  </ul>
-
-  <h2 id="service">3. Description of Service</h2>
-  <p>Nora is an AI-powered voice companion application that provides:</p>
-  <ul>
-    <li>Conversational AI with voice interaction capabilities</li>
-    <li>Emotional awareness and personalized responses</li>
-    <li>Smart reminders and scheduling features</li>
-    <li>Daily journal and mood tracking</li>
-    <li>Voice synthesis and optional voice cloning</li>
-    <li>Child Mode for younger users</li>
-    <li>Multi-language support</li>
-  </ul>
-  <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time with reasonable notice.</p>
-
-  <h2 id="accounts">4. Accounts & Registration</h2>
-  <ul>
-    <li>You must provide accurate, current, and complete information during registration</li>
-    <li>You are responsible for maintaining the confidentiality of your account credentials</li>
-    <li>You are responsible for all activities that occur under your account</li>
-    <li>You must notify us immediately at <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a> if you suspect unauthorized access</li>
-    <li>We reserve the right to refuse service, terminate accounts, or remove content at our discretion</li>
-  </ul>
-
-  <h2 id="subscriptions">5. Subscriptions & Payments</h2>
-
-  <h3>5.1 Available Plans</h3>
-  <ul>
-    <li><strong>Free Plan:</strong> Limited daily messages, basic features, no charge</li>
-    <li><strong>Pro Plan ($12.99/month):</strong> Expanded daily messages, advanced AI model, unlimited memory, additional features</li>
-    <li><strong>Max Plan ($24.99/month):</strong> Maximum daily messages, all features, priority processing, Voice Clone included</li>
-    <li><strong>Voice Clone Add-on ($7.99 one-time):</strong> Clone your voice for use with any plan</li>
-  </ul>
-
-  <h3>5.2 Billing Terms</h3>
-  <ul>
-    <li>All prices are in USD and inclusive of applicable taxes where required</li>
-    <li>Subscriptions automatically renew unless cancelled at least 24 hours before the renewal date</li>
-    <li>Payments are processed through your Apple ID (iOS) or Google Play account (Android)</li>
-    <li>You can manage and cancel subscriptions in your device's subscription settings</li>
-    <li>We reserve the right to change prices with 30 days' advance notice</li>
-  </ul>
-
-  <h3>5.3 Refund Policy</h3>
-  <ul>
-    <li>Subscription fees are <strong>non-refundable</strong> except as required by applicable law</li>
-    <li>No refunds for partial subscription periods</li>
-    <li>The Voice Clone add-on is <strong>non-refundable</strong> once the voice model has been created</li>
-    <li>Refund requests for technical issues may be considered on a case-by-case basis — contact <a href="mailto:support@nora-ai.org">support@nora-ai.org</a></li>
-    <li>EU users have a 14-day right of withdrawal for digital services, except where service has been fully performed with your prior consent</li>
-  </ul>
-
-  <h3>5.4 Message Limits</h3>
-  <p>Daily message limits apply per plan. Limits reset at midnight UTC. Unused messages do not roll over. We reserve the right to adjust limits with notice. Using the Voice Clone feature applies a reduced message limit due to additional processing requirements.</p>
-
-  <h2 id="voice-clone">6. Voice Clone Terms</h2>
-  <div class="warning">
-    <p>⚠️ <strong>Critical Notice:</strong> Voice cloning technology can be misused. By using this feature, you accept full responsibility for compliance with all applicable laws.</p>
-  </div>
-
-  <h3>6.1 Consent & Representations</h3>
-  <p>By using the Voice Clone feature, you represent and warrant that:</p>
-  <ul>
-    <li>You are recording your own voice only</li>
-    <li>You are at least 18 years old (voice cloning is not available to minors)</li>
-    <li>You have full legal right to clone and use the recorded voice</li>
-    <li>You will not attempt to clone another person's voice without their explicit, informed, written consent</li>
-  </ul>
-
-  <h3>6.2 Prohibited Uses</h3>
-  <p>You may not use the Voice Clone feature to:</p>
-  <ul>
-    <li>Impersonate any person, living or deceased</li>
-    <li>Create fraudulent content, deepfakes, or misleading audio</li>
-    <li>Harass, defame, or harm any individual</li>
-    <li>Violate any person's privacy or right of publicity</li>
-    <li>Generate content that violates any applicable law</li>
-  </ul>
-
-  <h3>6.3 Liability</h3>
-  <p>You are solely responsible for how you use the Voice Clone feature. Nora AI is not liable for any harm, legal claims, or damages arising from your misuse of voice cloning technology. We reserve the right to immediately terminate your account and remove your voice model if we suspect misuse.</p>
-
-  <h2 id="acceptable-use">7. Acceptable Use Policy</h2>
-  <p>You agree NOT to use the App to:</p>
-  <ul>
-    <li>Generate, transmit, or store illegal, harmful, or offensive content</li>
-    <li>Harass, threaten, bully, or intimidate any person</li>
-    <li>Spread misinformation, disinformation, or propaganda</li>
-    <li>Attempt to extract, reverse-engineer, or circumvent our AI systems</li>
-    <li>Use automated scripts, bots, or scrapers to interact with the App</li>
-    <li>Attempt to gain unauthorized access to our systems or other users' accounts</li>
-    <li>Violate any applicable local, national, or international law or regulation</li>
-    <li>Infringe any third party's intellectual property rights</li>
-    <li>Use the App for commercial purposes without our written consent</li>
-    <li>Share your account credentials or subscription with others</li>
-  </ul>
-
-  <h2 id="intellectual-property">8. Intellectual Property</h2>
-  <h3>8.1 Our Property</h3>
-  <p>The App, including its design, code, features, branding, and all content created by us, is owned by Nora AI and protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written consent.</p>
-
-  <h3>8.2 Your Content</h3>
-  <p>You retain ownership of content you create (conversations, journal entries, reminders). By using the App, you grant us a limited, non-exclusive, royalty-free license to process and store your content solely for the purpose of providing the Service.</p>
-
-  <h3>8.3 Feedback</h3>
-  <p>Any feedback, suggestions, or ideas you provide may be used by us without obligation to you.</p>
-
-  <h2 id="ai-disclaimer">9. AI Disclaimer</h2>
-  <div class="warning">
-    <p>⚠️ <strong>Important:</strong> Nora is an AI companion, not a licensed professional. Nora's responses are generated by artificial intelligence and should not be relied upon as medical, psychological, legal, financial, or professional advice of any kind.</p>
-  </div>
-  <ul>
-    <li>AI responses may be inaccurate, incomplete, or inappropriate</li>
-    <li>Do not use Nora as a substitute for professional medical or mental health care</li>
-    <li>If you are experiencing a mental health crisis, please contact emergency services or a crisis helpline</li>
-    <li>Nora's memory features rely on stored conversation history — we do not guarantee accuracy of recalled information</li>
-    <li>We are not responsible for decisions made based on Nora's responses</li>
-  </ul>
-
-  <h2 id="children">10. Minors & Child Mode</h2>
-  <ul>
-    <li>Users under 13 require verifiable parental consent</li>
-    <li>Child Mode must be enabled when the App is used by children under 13</li>
-    <li>Parents/guardians are responsible for monitoring their child's use of the App</li>
-    <li>Voice Clone is not available for users under 18</li>
-    <li>We are not liable for content accessed by minors whose age was misrepresented</li>
-  </ul>
-
-  <h2 id="privacy">11. Privacy</h2>
-  <p>Your privacy is important to us. Please review our <a href="privacy-policy.html">Privacy Policy</a>, which explains how we collect, use, and protect your information. By using the App, you consent to our data practices as described in the Privacy Policy.</p>
-
-  <h2 id="termination">12. Termination</h2>
-  <h3>12.1 By You</h3>
-  <p>You may terminate your account at any time through Settings → Delete Account. Upon termination, your subscription will not be refunded for the remaining period, and your data will be deleted within 30 days.</p>
-
-  <h3>12.2 By Us</h3>
-  <p>We may suspend or terminate your account immediately, without notice, if you:</p>
-  <ul>
-    <li>Violate these Terms or our Acceptable Use Policy</li>
-    <li>Engage in fraudulent, abusive, or illegal activity</li>
-    <li>Misuse the Voice Clone feature</li>
-    <li>Fail to pay subscription fees</li>
-    <li>Create risk or legal exposure for us</li>
-  </ul>
-  <p>Upon termination, your right to use the App ceases immediately.</p>
-
-  <h2 id="disclaimers">13. Disclaimers</h2>
-  <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, NORA AI DISCLAIMS ALL WARRANTIES INCLUDING:</p>
-  <ul>
-    <li>Warranties of merchantability and fitness for a particular purpose</li>
-    <li>Warranties that the App will be uninterrupted, error-free, or secure</li>
-    <li>Warranties regarding the accuracy or reliability of AI-generated content</li>
-    <li>Warranties that defects will be corrected</li>
-  </ul>
-
-  <h2 id="liability">14. Limitation of Liability</h2>
-  <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NORA AI SHALL NOT BE LIABLE FOR:</p>
-  <ul>
-    <li>Any indirect, incidental, special, consequential, or punitive damages</li>
-    <li>Loss of data, profits, goodwill, or business opportunities</li>
-    <li>Damages resulting from reliance on AI-generated content</li>
-    <li>Damages from unauthorized access to your account</li>
-    <li>Any damages exceeding the amount you paid us in the 3 months preceding the claim</li>
-  </ul>
-  <p>Some jurisdictions do not allow limitation of liability — in such cases, our liability is limited to the fullest extent permitted by law.</p>
-
-  <h2 id="indemnification">15. Indemnification</h2>
-  <p>You agree to indemnify, defend, and hold harmless Nora AI and its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including reasonable legal fees) arising from:</p>
-  <ul>
-    <li>Your use of the App</li>
-    <li>Your violation of these Terms</li>
-    <li>Your violation of any third party's rights</li>
-    <li>Your misuse of the Voice Clone feature</li>
-    <li>Any content you create or transmit through the App</li>
-  </ul>
-
-  <h2 id="disputes">16. Dispute Resolution</h2>
-  <h3>16.1 Informal Resolution</h3>
-  <p>Before filing any formal claim, you agree to contact us at <a href="mailto:legal@nora-ai.org">legal@nora-ai.org</a> and attempt to resolve the dispute informally for at least 30 days.</p>
-
-  <h3>16.2 Binding Arbitration</h3>
-  <p>If informal resolution fails, disputes shall be resolved through binding arbitration, except for claims that may be brought in small claims court. You waive the right to a jury trial and class action participation.</p>
-
-  <h3>16.3 EU Users</h3>
-  <p>EU users may also use the EU Online Dispute Resolution platform: <a href="https://ec.europa.eu/odr" target="_blank">ec.europa.eu/odr</a></p>
-
-  <h2 id="governing-law">17. Governing Law</h2>
-  <p>These Terms are governed by applicable law. For EU users, mandatory consumer protection laws of your country of residence apply and cannot be overridden by these Terms.</p>
-
-  <h2 id="changes">18. Changes to Terms</h2>
-  <p>We may update these Terms from time to time. Material changes will be communicated via:</p>
-  <ul>
-    <li>In-app notification</li>
-    <li>Email to your registered address</li>
-    <li>Update to the "Last updated" date</li>
-  </ul>
-  <p>Continued use of the App after changes take effect constitutes acceptance. If you disagree with changes, you must stop using the App and delete your account.</p>
-
-  <h2 id="contact">19. Contact</h2>
-  <p>For questions about these Terms:</p>
-  <ul>
-    <li><strong>General:</strong> <a href="mailto:hello@nora-ai.org">hello@nora-ai.org</a></li>
-    <li><strong>Legal:</strong> <a href="mailto:legal@nora-ai.org">legal@nora-ai.org</a></li>
-    <li><strong>Privacy:</strong> <a href="mailto:privacy@nora-ai.org">privacy@nora-ai.org</a></li>
-    <li><strong>Support:</strong> <a href="mailto:support@nora-ai.org">support@nora-ai.org</a></li>
-    <li><strong>Website:</strong> <a href="https://nora-ai.org" target="_blank">nora-ai.org</a></li>
-  </ul>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Legal Document</div>
+  <h1>Terms of <span>Service</span></h1>
+  <p class="hero-meta">
+    <strong>Nora AI Voice Companion</strong> &nbsp;|&nbsp;
+    Last updated: <strong>June 7, 2026</strong> &nbsp;|&nbsp;
+    Effective: <strong>June 7, 2026</strong>
+  </p>
 </div>
 
-<footer>© 2025 Nora AI. All rights reserved. · <a href="privacy-policy.html" style="color:#3a3855;">Privacy Policy</a></footer>
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Sidebar TOC -->
+  <aside class="toc-wrap">
+    <div class="toc-title">Contents</div>
+    <nav class="toc">
+      <a href="#s1">1. Acceptance</a>
+      <a href="#s2">2. Age Requirements</a>
+      <a href="#s3">3. Description of Service</a>
+      <a href="#s4">4. Accounts</a>
+      <a href="#s5">5. Subscriptions &amp; Billing</a>
+      <a href="#s6">6. Prohibited Conduct</a>
+      <a href="#s7">7. Voice Cloning</a>
+      <a href="#s8">8. AI Disclaimer</a>
+      <a href="#s9">9. Mental Health Disclaimer</a>
+      <a href="#s10">10. User Content</a>
+      <a href="#s11">11. No Warranty</a>
+      <a href="#s12">12. Limitation of Liability</a>
+      <a href="#s13">13. Indemnification</a>
+      <a href="#s14">14. Termination</a>
+      <a href="#s15">15. Third-Party Services</a>
+      <a href="#s16">16. Governing Law</a>
+      <a href="#s17">17. Dispute Resolution</a>
+      <a href="#s18">18. Changes to Terms</a>
+      <a href="#s19">19. Miscellaneous</a>
+      <a href="#s20">20. Contact</a>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <div class="card card-accent">
+      <p><strong>Please read these Terms carefully before using Nora.</strong> By creating an account or using the Service in any way, you agree to be bound by these Terms. If you do not agree, do not use Nora.</p>
+    </div>
+
+    <!-- 1 -->
+    <section id="s1">
+      <div class="section-header">
+        <span class="section-num">1</span>
+        <h2>Acceptance of Terms</h2>
+      </div>
+      <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and the individual developer of <strong>Nora AI Voice Companion</strong> ("Nora," "we," "us," or "our"), governing your access to and use of the Nora mobile application (package ID: com.nora.ai) and all associated services, features, content, and functionality (collectively, the "Service").</p>
+      <p>By (a) creating an account, (b) tapping "I Agree," (c) downloading or installing the app, or (d) using any part of the Service, you confirm that you have read, understood, and agree to be legally bound by these Terms and our <a href="nora_privacy_policy.html" style="color:var(--accent-light);">Privacy Policy</a>, which is incorporated herein by reference.</p>
+      <p>If you are using the Service on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
+    </section>
+
+    <!-- 2 -->
+    <section id="s2">
+      <div class="section-header">
+        <span class="section-num">2</span>
+        <h2>Age Requirements</h2>
+      </div>
+      <div class="card card-danger">
+        <p><strong>Nora is not for children.</strong> You must be at least 13 years old to use the Service. In jurisdictions where the age of digital consent is higher (e.g., 16 in certain EU member states), you must meet that higher age requirement.</p>
+      </div>
+      <p>By using the Service, you represent and warrant that:</p>
+      <ul>
+        <li>You are at least <strong>13 years of age</strong> (or the applicable age of digital consent in your jurisdiction, whichever is greater).</li>
+        <li>If you are between 13 and 17 (or 18 in some jurisdictions), you have obtained parental or guardian consent to use the Service.</li>
+        <li>You are not subject to any restriction that would prevent you from agreeing to these Terms.</li>
+      </ul>
+      <p>If we discover that a user is under the minimum age, we will immediately terminate the account and delete all associated data without notice or refund of any paid subscriptions. Parents or guardians who believe a minor has created an account should contact us immediately at <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a>.</p>
+    </section>
+
+    <!-- 3 -->
+    <section id="s3">
+      <div class="section-header">
+        <span class="section-num">3</span>
+        <h2>Description of Service</h2>
+      </div>
+      <p>Nora is an AI voice companion application that enables users to engage in voice-based conversations with an artificial intelligence system. The Service includes:</p>
+      <ul>
+        <li><strong>Voice recording and transcription</strong> — your spoken words are transcribed to text using AI speech recognition technology.</li>
+        <li><strong>AI conversation</strong> — text responses are generated by large language models (OpenAI GPT or Anthropic Claude depending on subscription tier).</li>
+        <li><strong>Text-to-speech synthesis</strong> — AI responses are spoken aloud using voice synthesis technology.</li>
+        <li><strong>Voice cloning</strong> — an optional paid feature allowing you to have the AI respond in a voice resembling your own.</li>
+        <li><strong>Push notification reminders</strong> — the AI can schedule reminders on your behalf.</li>
+        <li><strong>Conversation history and journaling</strong> — your conversations are stored and periodically summarized.</li>
+        <li><strong>Emotion detection</strong> — the AI may infer emotional context from conversation content to adapt its responses.</li>
+      </ul>
+      <p>The Service is provided on an evolving basis. Features may be added, modified, or removed at our discretion. We do not guarantee that any specific feature will remain available indefinitely.</p>
+    </section>
+
+    <!-- 4 -->
+    <section id="s4">
+      <div class="section-header">
+        <span class="section-num">4</span>
+        <h2>Accounts and Registration</h2>
+      </div>
+      <h3>4.1 Account Creation</h3>
+      <p>To use most features of the Service, you must register for an account using a valid email address. You agree to provide accurate, current, and complete information and to keep it updated. You must verify your email address to activate your account.</p>
+
+      <h3>4.2 Account Security</h3>
+      <p>You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You agree to:</p>
+      <ul>
+        <li>Use a strong password (minimum 8 characters, including uppercase, lowercase, and numbers).</li>
+        <li>Notify us immediately at <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a> if you suspect unauthorized access to your account.</li>
+        <li>Not share your account credentials with any other person.</li>
+        <li>Not create multiple accounts for the purpose of evading suspensions or usage limits.</li>
+      </ul>
+      <p>We are not liable for any loss or damage arising from unauthorized account access resulting from your failure to secure your credentials.</p>
+
+      <h3>4.3 One Account Per User</h3>
+      <p>Each person may maintain only one free-tier account. Creating multiple accounts to circumvent daily credit limits or other restrictions is a violation of these Terms and may result in permanent termination of all associated accounts.</p>
+    </section>
+
+    <!-- 5 -->
+    <section id="s5">
+      <div class="section-header">
+        <span class="section-num">5</span>
+        <h2>Subscriptions, Billing, and Refunds</h2>
+      </div>
+
+      <h3>5.1 Subscription Tiers</h3>
+      <p>Nora offers the following tiers:</p>
+      <ul>
+        <li><strong>FREE:</strong> 10 credits per day, standard AI voice, no voice cloning.</li>
+        <li><strong>PRO ($12.99/month):</strong> 100 credits per day, voice cloning enabled, premium AI model.</li>
+        <li><strong>MAX ($24.99/month):</strong> 300 credits per day, voice cloning enabled, premium AI, all features.</li>
+        <li><strong>Voice Clone Add-on ($7.99 one-time):</strong> Enables voice cloning on the FREE tier (subject to per-day credit limits).</li>
+      </ul>
+      <p>Prices are in USD. Prices may vary by region as determined by the applicable app store.</p>
+
+      <h3>5.2 Billing and Auto-Renewal</h3>
+      <p>Subscriptions are billed through the <strong>Apple App Store</strong> or <strong>Google Play Store</strong>, as applicable. Subscriptions automatically renew at the end of each billing period unless cancelled at least <strong>24 hours before</strong> the renewal date. By subscribing, you authorize the app store to charge your payment method the subscription price plus any applicable taxes at each renewal.</p>
+
+      <h3>5.3 Cancellation</h3>
+      <p>You may cancel your subscription at any time through your device's app store subscription management settings:</p>
+      <ul>
+        <li><strong>iOS:</strong> Settings &rarr; Your Name &rarr; Subscriptions &rarr; Nora</li>
+        <li><strong>Android:</strong> Google Play Store &rarr; Subscriptions &rarr; Nora</li>
+      </ul>
+      <p>Cancellation takes effect at the end of the current billing period. You retain access to paid features until that date. We do not process cancellations directly — all cancellations must be completed through the app store.</p>
+
+      <h3>5.4 Refund Policy</h3>
+      <p>All subscription payments are processed by Apple or Google and are subject to <strong>their respective refund policies</strong>. We do not control and are not responsible for refund decisions made by Apple or Google. To request a refund:</p>
+      <ul>
+        <li><strong>iOS:</strong> Visit <a href="https://reportaproblem.apple.com" style="color:var(--accent-light);">reportaproblem.apple.com</a></li>
+        <li><strong>Android:</strong> Contact Google Play support through the Play Store app</li>
+      </ul>
+      <p>We may, at our sole discretion, issue courtesy credits or refunds in exceptional circumstances (e.g., prolonged service outages of more than 72 hours caused by our systems). Such exceptions do not create an ongoing obligation.</p>
+
+      <h3>5.5 Price Changes</h3>
+      <p>We reserve the right to change subscription prices at any time. Price changes will be communicated at least <strong>30 days in advance</strong> through in-app notification and/or email. Continued use after the effective date constitutes acceptance of the new pricing.</p>
+
+      <h3>5.6 Free Tier Credits</h3>
+      <p>Daily credits reset at midnight UTC. Unused credits do not roll over to the next day. We reserve the right to adjust credit amounts, limits, and feature access across all tiers with advance notice.</p>
+    </section>
+
+    <!-- 6 -->
+    <section id="s6">
+      <div class="section-header">
+        <span class="section-num">6</span>
+        <h2>Prohibited Conduct</h2>
+      </div>
+      <p>You agree not to use the Service in any way that:</p>
+
+      <h3>6.1 Illegal or Harmful Activities</h3>
+      <ul>
+        <li>Violates any applicable law or regulation.</li>
+        <li>Facilitates, plans, or promotes violence, self-harm, terrorism, or other criminal activity.</li>
+        <li>Involves the transmission or generation of child sexual abuse material (CSAM) — such conduct will be reported to law enforcement without exception.</li>
+        <li>Constitutes fraud, impersonation, or identity theft.</li>
+      </ul>
+
+      <h3>6.2 Harassment and Abuse</h3>
+      <ul>
+        <li>Harasses, threatens, intimidates, or bullies any person.</li>
+        <li>Uses Nora to generate or disseminate hate speech targeting any individual or group based on race, ethnicity, religion, gender, sexual orientation, disability, or national origin.</li>
+        <li>Attempts to manipulate, stalk, or psychologically harm any other person using AI-generated content.</li>
+      </ul>
+
+      <h3>6.3 Technical Abuse</h3>
+      <ul>
+        <li>Attempts to reverse-engineer, decompile, disassemble, or extract source code from the Service.</li>
+        <li>Circumvents or attempts to circumvent any security, rate limiting, credit, or access control mechanism.</li>
+        <li>Uses automated bots, scripts, or tools to interact with the Service in ways not intended by its design.</li>
+        <li>Transmits malware, viruses, or any code designed to damage or disrupt the Service or other systems.</li>
+        <li>Attempts to access accounts, data, or systems belonging to other users.</li>
+      </ul>
+
+      <h3>6.4 Intellectual Property and Misuse</h3>
+      <ul>
+        <li>Uses the Service to generate spam, bulk unsolicited communications, or phishing content.</li>
+        <li>Republishes AI-generated content as human-authored without appropriate disclosure, where such misrepresentation causes harm.</li>
+        <li>Uses the Service to infringe any third party's intellectual property, privacy, or other rights.</li>
+      </ul>
+
+      <p>Violations may result in immediate account suspension or termination, reporting to relevant authorities, and/or legal action. We reserve the right to determine what constitutes a violation at our sole discretion.</p>
+    </section>
+
+    <!-- 7 -->
+    <section id="s7">
+      <div class="section-header">
+        <span class="section-num">7</span>
+        <h2>Voice Cloning — Critical Terms</h2>
+      </div>
+
+      <div class="card card-danger">
+        <p><strong>You may ONLY clone YOUR OWN voice. Cloning another person's voice without their explicit written consent is strictly prohibited, illegal in many jurisdictions, and constitutes a material breach of these Terms resulting in immediate account termination.</strong></p>
+      </div>
+
+      <h3>7.1 Consent and Responsibility</h3>
+      <p>By using the voice cloning feature, you represent, warrant, and agree that:</p>
+      <ul>
+        <li>You are submitting a recording of <strong>your own voice</strong> and no other person's voice.</li>
+        <li>You have the full right, authority, and consent to create a digital clone of the submitted voice.</li>
+        <li>The voice sample was not obtained through deception, coercion, or without the knowledge of the person whose voice it contains.</li>
+        <li>You will use the cloned voice solely for personal, non-commercial use within the Nora application.</li>
+        <li>You will not use Nora's voice synthesis capabilities to impersonate any real person, including public figures, in a manner that is deceptive, harmful, or likely to mislead listeners.</li>
+      </ul>
+
+      <h3>7.2 Prohibited Voice Clone Uses</h3>
+      <p>You specifically agree not to:</p>
+      <ul>
+        <li>Clone another person's voice without their explicit, informed, and documented written consent.</li>
+        <li>Use a cloned voice to generate audio that defames, harasses, or harms the reputation of any individual.</li>
+        <li>Use a cloned voice to generate audio for financial fraud, scams, or social engineering attacks.</li>
+        <li>Use a cloned voice to circumvent authentication systems, two-factor voice verification, or any security measure.</li>
+        <li>Distribute or publish audio generated using a cloned voice in contexts designed to deceive listeners about its origin.</li>
+      </ul>
+
+      <h3>7.3 Legal Compliance</h3>
+      <p>Voice cloning may be subject to biometric data laws (including BIPA in Illinois, USA), anti-deepfake legislation, and other regulations depending on your jurisdiction. <strong>You are solely and entirely responsible for ensuring that your use of voice cloning complies with all applicable laws in your jurisdiction.</strong> Nora bears no responsibility for your compliance with local laws governing voice data.</p>
+
+      <h3>7.4 Anti-Abuse Verification</h3>
+      <p>To reduce abuse, Nora requires users to read a specific on-screen text passage during voice clone recording. This anti-abuse measure is designed to verify that the user is recording their own voice with awareness of what they are doing. Attempting to circumvent this verification is a violation of these Terms.</p>
+
+      <h3>7.5 Indemnification for Voice Clone Misuse</h3>
+      <p>If your use of the voice cloning feature results in any claim, lawsuit, liability, or regulatory action against us or any third party, you agree to fully indemnify, defend, and hold harmless Nora and its developer from all resulting costs, damages, and legal fees. See Section 13 for the full indemnification clause.</p>
+
+      <h3>7.6 Voice Sharing Feature</h3>
+      <p>If you share your voice clone with another user via a code, you are solely responsible for that sharing decision. You may revoke shared access at any time via Settings. We are not responsible for how the recipient uses your shared voice within the bounds of the Service.</p>
+    </section>
+
+    <!-- 8 -->
+    <section id="s8">
+      <div class="section-header">
+        <span class="section-num">8</span>
+        <h2>AI Disclaimer — Not Professional Advice</h2>
+      </div>
+
+      <div class="card card-warn">
+        <p><strong>IMPORTANT: Nora's AI responses are NOT professional advice of any kind. Do not rely on them for medical, legal, financial, psychological, or any other professional guidance.</strong></p>
+      </div>
+
+      <div class="legal-block">
+        <p>THE AI RESPONSES GENERATED BY NORA ARE PROVIDED FOR ENTERTAINMENT, COMPANIONSHIP, AND GENERAL CONVERSATIONAL PURPOSES ONLY. NORA IS NOT A LICENSED MEDICAL PROFESSIONAL, THERAPIST, COUNSELOR, LAWYER, FINANCIAL ADVISOR, OR ANY OTHER TYPE OF PROFESSIONAL.</p>
+        <br />
+        <p>AI RESPONSES MAY BE INACCURATE, INCOMPLETE, OUTDATED, MISLEADING, OR CONTEXTUALLY INAPPROPRIATE. YOU ACKNOWLEDGE THAT ARTIFICIAL INTELLIGENCE SYSTEMS CAN AND DO PRODUCE ERRORS, HALLUCINATIONS, AND OUTPUTS THAT ARE PLAUSIBLE-SOUNDING BUT FACTUALLY WRONG.</p>
+        <br />
+        <p>YOU RELY ON ANY AI-GENERATED RESPONSE ENTIRELY AT YOUR OWN RISK. WE EXPRESSLY DISCLAIM ALL LIABILITY FOR ANY DECISIONS, ACTIONS, OR INACTIONS YOU TAKE BASED ON AI-GENERATED CONTENT, INCLUDING BUT NOT LIMITED TO: HEALTH OR MEDICAL DECISIONS; LEGAL DECISIONS; FINANCIAL DECISIONS; RELATIONSHIP DECISIONS; ANY DECISION IN A CRISIS SITUATION.</p>
+      </div>
+
+      <p>Always seek the advice of qualified professionals for matters requiring professional expertise. In any emergency situation, contact local emergency services (911, 112, or your regional equivalent) immediately — do not rely on an AI application.</p>
+    </section>
+
+    <!-- 9 -->
+    <section id="s9">
+      <div class="section-header">
+        <span class="section-num">9</span>
+        <h2>Mental Health Disclaimer</h2>
+      </div>
+
+      <div class="card card-danger">
+        <p><strong>Nora is NOT a therapist, psychologist, psychiatrist, or mental health professional. Nora is NOT a substitute for professional mental health care. If you are in crisis, contact emergency services immediately.</strong></p>
+      </div>
+
+      <h3>9.1 Not a Replacement for Care</h3>
+      <p>Nora is designed as a casual AI voice companion for everyday conversation and wellbeing support. The companionship, emotional acknowledgment, and supportive responses Nora provides are generated by AI and do not constitute therapy, counseling, crisis intervention, or any form of mental health treatment.</p>
+
+      <h3>9.2 Crisis Situations</h3>
+      <p>If you are experiencing a mental health crisis, suicidal thoughts, thoughts of harming yourself or others, or any other emergency, <strong>please immediately contact</strong>:</p>
+      <ul>
+        <li><strong>Emergency services:</strong> 911 (US/Canada), 112 (EU), 999 (UK), or your local equivalent.</li>
+        <li><strong>Crisis hotlines:</strong> Such as the 988 Suicide &amp; Crisis Lifeline (US), Samaritans (UK), or your regional equivalent.</li>
+        <li><strong>A trusted person</strong> in your life — a friend, family member, doctor, or counselor.</li>
+      </ul>
+      <p>Do not rely on Nora in an emergency. AI responses may be delayed, incorrect, or inappropriate in crisis situations.</p>
+
+      <h3>9.3 Emotional Dependency</h3>
+      <p>We recognize that AI companions can be emotionally engaging. We encourage you to maintain healthy human relationships and not to use Nora as a substitute for real human connection, professional support, or evidence-based mental health treatment. We expressly disclaim all liability for any emotional harm, psychological distress, dependency, or mental health outcomes — positive or negative — that you attribute to your use of Nora.</p>
+
+      <h3>9.4 Reminders are Not Monitored</h3>
+      <p>Reminders scheduled through Nora are automated and not monitored by any human. We take no responsibility for missed reminders due to technical failures, device issues, notification permission changes, or any other reason. Do not rely on Nora reminders for time-critical medical, legal, or safety-related tasks.</p>
+    </section>
+
+    <!-- 10 -->
+    <section id="s10">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>User Content and Intellectual Property</h2>
+      </div>
+
+      <h3>10.1 Your Ownership</h3>
+      <p>You retain full ownership of the content you create and submit through the Service ("User Content"), including your voice recordings, conversation inputs, and any voice clone recordings you submit. These Terms do not transfer any ownership rights in your User Content to us.</p>
+
+      <h3>10.2 License to Us</h3>
+      <p>By submitting User Content, you grant Nora a <strong>limited, non-exclusive, royalty-free, worldwide license</strong> to use, process, transmit, store, and reproduce your User Content solely for the purposes of:</p>
+      <ul>
+        <li>Providing and operating the Service as described in these Terms.</li>
+        <li>Transmitting your content to third-party AI providers (OpenAI, Anthropic) and infrastructure providers (RunPod, Firebase) to generate service outputs.</li>
+        <li>Creating AI-generated summaries and journal entries from your conversation history for display to you.</li>
+      </ul>
+      <p>This license does not permit us to sell, license, publicly display, or commercially exploit your User Content independently of providing the Service to you. The license terminates when you delete your content or account, subject to reasonable processing delays and backup retention periods described in our Privacy Policy.</p>
+
+      <h3>10.3 AI-Generated Content</h3>
+      <p>AI-generated text and audio responses produced by the Service in response to your inputs ("AI Outputs") are provided to you for your personal use. The intellectual property status of AI-generated content under applicable law is unsettled. You agree not to misrepresent AI Outputs as human-authored in contexts where such misrepresentation could constitute fraud or cause harm.</p>
+
+      <h3>10.4 Nora's Intellectual Property</h3>
+      <p>The Nora application, its design, code, interface, branding, trademarks, and all proprietary technology are owned by or licensed to Nora and protected by applicable intellectual property laws. You receive only a limited, revocable, non-transferable, non-sublicensable license to use the Service for personal, non-commercial purposes in accordance with these Terms. You may not copy, modify, distribute, sell, sublicense, or reverse-engineer any part of the Service.</p>
+    </section>
+
+    <!-- 11 -->
+    <section id="s11">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>No Warranty — "As Is" Service</h2>
+      </div>
+
+      <div class="legal-block">
+        <p>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NORA EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:</p>
+        <br />
+        <p>(a) WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT;<br />
+        (b) ANY WARRANTY THAT THE SERVICE WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS;<br />
+        (c) ANY WARRANTY THAT THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE;<br />
+        (d) ANY WARRANTY AS TO THE ACCURACY, COMPLETENESS, RELIABILITY, CURRENCY, OR QUALITY OF AI-GENERATED RESPONSES;<br />
+        (e) ANY WARRANTY THAT DEFECTS IN THE SERVICE WILL BE CORRECTED;<br />
+        (f) ANY WARRANTY REGARDING THE AVAILABILITY OF THIRD-PARTY AI MODELS (OPENAI, ANTHROPIC) OR INFRASTRUCTURE SERVICES;<br />
+        (g) ANY WARRANTY THAT VOICE SYNTHESIS WILL ACCURATELY REPLICATE ANY VOICE;<br />
+        (h) ANY WARRANTY THAT PUSH NOTIFICATION REMINDERS WILL BE DELIVERED AT THE SCHEDULED TIME.</p>
+      </div>
+
+      <p>No oral or written communication from Nora or its developer shall create any warranty not expressly stated in these Terms. Some jurisdictions do not permit the exclusion of implied warranties; in such jurisdictions, the above exclusions apply to the maximum extent permitted by law.</p>
+    </section>
+
+    <!-- 12 -->
+    <section id="s12">
+      <div class="section-header">
+        <span class="section-num">12</span>
+        <h2>Limitation of Liability</h2>
+      </div>
+
+      <div class="legal-block">
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL NORA, ITS DEVELOPER, EMPLOYEES, AGENTS, AFFILIATES, LICENSORS, OR SERVICE PROVIDERS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY:</p>
+        <br />
+        <p>(a) INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES;<br />
+        (b) LOSS OF PROFITS, REVENUE, DATA, BUSINESS, GOODWILL, OR ANTICIPATED SAVINGS;<br />
+        (c) PERSONAL INJURY OR EMOTIONAL DISTRESS;<br />
+        (d) DAMAGES ARISING FROM RELIANCE ON AI-GENERATED CONTENT;<br />
+        (e) DAMAGES ARISING FROM VOICE CLONE MISUSE BY YOU OR A THIRD PARTY;<br />
+        (f) DAMAGES ARISING FROM MISSED OR FAILED REMINDERS;<br />
+        (g) DAMAGES ARISING FROM SERVICE OUTAGES, SERVER FAILURES, OR THIRD-PARTY SERVICE DISRUPTIONS;<br />
+        (h) DAMAGES ARISING FROM DATA BREACHES DESPITE REASONABLE SECURITY MEASURES;<br />
+        (i) DAMAGES ARISING FROM EMOTIONAL DEPENDENCY ON THE AI COMPANION;<br />
+        (j) ANY OTHER INDIRECT OR CONSEQUENTIAL DAMAGES</p>
+        <br />
+        <p>— ARISING OUT OF OR IN CONNECTION WITH THESE TERMS OR YOUR USE OF (OR INABILITY TO USE) THE SERVICE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      </div>
+
+      <h3>12.1 Aggregate Liability Cap</h3>
+      <div class="card card-accent">
+        <p><strong>Our total aggregate liability to you for all claims arising out of or relating to the Service or these Terms is limited to the greater of: (a) the total amount you paid to Nora (not including app store fees) in the three (3) months immediately preceding the event giving rise to the claim, or (b) ONE HUNDRED US DOLLARS ($100.00 USD).</strong></p>
+      </div>
+      <p>This limitation applies regardless of the legal theory (contract, tort, statute, or otherwise) and even if a limited remedy fails of its essential purpose. Some jurisdictions do not allow certain limitations on liability; in those jurisdictions, our liability is limited to the maximum extent permitted by applicable law.</p>
+
+      <h3>12.2 Basis of Bargain</h3>
+      <p>You acknowledge that the pricing of the Service reflects this allocation of risk. The limitations in this section are a fundamental element of the basis of the bargain between you and Nora. Without these limitations, Nora could not provide the Service at its current pricing.</p>
+    </section>
+
+    <!-- 13 -->
+    <section id="s13">
+      <div class="section-header">
+        <span class="section-num">13</span>
+        <h2>Indemnification</h2>
+      </div>
+      <p>You agree to defend, indemnify, and hold harmless Nora and its developer, affiliates, licensors, service providers, and their respective officers, directors, employees, contractors, agents, successors, and assigns (collectively, "Nora Parties") from and against any and all claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to:</p>
+      <ul>
+        <li>Your violation of these Terms or any applicable law or regulation.</li>
+        <li>Your User Content, including any infringement of third-party intellectual property, privacy, or other rights.</li>
+        <li>Your misuse of the voice cloning feature, including cloning another person's voice without consent.</li>
+        <li>Your use of AI-generated content in a manner that causes harm to third parties.</li>
+        <li>Any claims by third parties arising from your use of the Service.</li>
+        <li>Your fraud, willful misconduct, or gross negligence.</li>
+        <li>Any claim by a person whose voice you cloned without authorization.</li>
+      </ul>
+      <p>We reserve the right to assume exclusive defense and control of any matter subject to indemnification by you, in which case you will cooperate with us in asserting available defenses.</p>
+    </section>
+
+    <!-- 14 -->
+    <section id="s14">
+      <div class="section-header">
+        <span class="section-num">14</span>
+        <h2>Termination</h2>
+      </div>
+
+      <h3>14.1 Termination by You</h3>
+      <p>You may stop using the Service and delete your account at any time through <strong>Settings → Account → Delete Account</strong>. Deleting your account terminates the license granted to you under these Terms. Subscription cancellation alone does not delete your account or data.</p>
+
+      <h3>14.2 Termination by Us</h3>
+      <p>We reserve the right to suspend or permanently terminate your access to the Service, with or without notice, if:</p>
+      <ul>
+        <li>You violate any provision of these Terms.</li>
+        <li>We reasonably believe your use poses a risk to the Service, other users, third parties, or us.</li>
+        <li>You engage in illegal activity through the Service.</li>
+        <li>Your account shows evidence of fraud, abuse, or manipulation of limits.</li>
+        <li>We are required to do so by law or a valid legal order.</li>
+        <li>We decide to discontinue the Service (with reasonable advance notice where practicable).</li>
+      </ul>
+
+      <h3>14.3 Effect of Termination</h3>
+      <p>Upon termination: (a) your license to use the Service ends immediately; (b) you must cease all use; (c) we may delete your data subject to our Privacy Policy retention schedule; (d) you remain liable for any obligations accrued prior to termination; (e) Sections 8, 9, 11, 12, 13, 16, 17, and 19 survive termination.</p>
+
+      <h3>14.4 No Refunds on Termination for Cause</h3>
+      <p>If we terminate your account for violation of these Terms, you are not entitled to any refund of prepaid subscription fees. Refund eligibility for other terminations is governed by the applicable app store's policies.</p>
+    </section>
+
+    <!-- 15 -->
+    <section id="s15">
+      <div class="section-header">
+        <span class="section-num">15</span>
+        <h2>Third-Party Services and Links</h2>
+      </div>
+      <p>The Service integrates with and relies upon third-party services including OpenAI, Anthropic, Google Firebase, RunPod, RevenueCat, and Expo. These services are governed by their own terms and privacy policies. <strong>We are not responsible for the practices, availability, accuracy, or content of any third-party service.</strong></p>
+      <p>If a third-party service (such as OpenAI or Anthropic) becomes unavailable, changes its pricing, modifies its policies, or makes changes that affect Nora's operation, we cannot guarantee uninterrupted service and will not be liable for resulting service degradation or interruption.</p>
+      <p>The Service may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of any linked website. Accessing linked sites is at your own risk.</p>
+    </section>
+
+    <!-- 16 -->
+    <section id="s16">
+      <div class="section-header">
+        <span class="section-num">16</span>
+        <h2>Governing Law</h2>
+      </div>
+      <p>These Terms are governed by and construed in accordance with the laws of the <strong>State of Delaware, United States of America</strong>, without regard to its conflict of law provisions. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+      <p>If you are a consumer in the European Union, you may also have the right to rely on the mandatory consumer protection provisions of the law of the country where you are resident, to the extent that those laws provide greater protection than Delaware law.</p>
+      <p>Nothing in these Terms is intended to exclude or limit any consumer rights that you may have under mandatory provisions of applicable law in your country of residence.</p>
+    </section>
+
+    <!-- 17 -->
+    <section id="s17">
+      <div class="section-header">
+        <span class="section-num">17</span>
+        <h2>Dispute Resolution</h2>
+      </div>
+
+      <h3>17.1 Informal Resolution First</h3>
+      <p>Before initiating any formal dispute proceedings, you agree to contact us at <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a> and give us a reasonable opportunity (at least <strong>30 days</strong>) to resolve the dispute informally.</p>
+
+      <h3>17.2 Binding Arbitration</h3>
+      <p>To the extent permitted by applicable law, any dispute, claim, or controversy arising out of or relating to these Terms or your use of the Service that cannot be resolved informally shall be resolved by <strong>binding individual arbitration</strong> administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules. The arbitration will be conducted in English. You may elect to participate via written submissions, phone, or video conference.</p>
+
+      <h3>17.3 Class Action Waiver</h3>
+      <p><strong>YOU AND NORA AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</strong> If this class action waiver is found unenforceable, then the entirety of the arbitration provision will be null and void with respect to that proceeding.</p>
+
+      <h3>17.4 Exceptions</h3>
+      <p>Either party may seek injunctive or other equitable relief in a court of competent jurisdiction to prevent actual or threatened infringement, misappropriation, or violation of a party's intellectual property or confidential information. Users in jurisdictions where arbitration clauses are unenforceable (including certain EU member states) may bring claims in their local courts.</p>
+
+      <h3>17.5 EU Consumer Dispute Resolution</h3>
+      <p>If you are an EU consumer, you may also use the European Commission's Online Dispute Resolution platform at <a href="https://ec.europa.eu/consumers/odr" style="color:var(--accent-light);">https://ec.europa.eu/consumers/odr</a>.</p>
+    </section>
+
+    <!-- 18 -->
+    <section id="s18">
+      <div class="section-header">
+        <span class="section-num">18</span>
+        <h2>Changes to Terms</h2>
+      </div>
+      <p>We reserve the right to modify these Terms at any time. When we make material changes, we will:</p>
+      <ul>
+        <li>Update the "Last updated" date at the top of this document.</li>
+        <li>Provide in-app notice and/or email notification at least <strong>14 days</strong> before the changes take effect.</li>
+        <li>For changes that materially reduce your rights, request renewed acknowledgment at next login.</li>
+      </ul>
+      <p>Your continued use of the Service after the effective date of the modified Terms constitutes your acceptance of the changes. If you do not agree to the modified Terms, you must stop using the Service and delete your account before the effective date.</p>
+      <p>We encourage you to review these Terms periodically. The current version will always be accessible at <a href="https://nora-landing-blue.vercel.app" style="color:var(--accent-light);">https://nora-landing-blue.vercel.app</a> and within the app's Settings.</p>
+    </section>
+
+    <!-- 19 -->
+    <section id="s19">
+      <div class="section-header">
+        <span class="section-num">19</span>
+        <h2>Miscellaneous</h2>
+      </div>
+
+      <h3>19.1 Entire Agreement</h3>
+      <p>These Terms, together with the Privacy Policy and any other policies we post, constitute the entire agreement between you and Nora concerning the Service and supersede all prior agreements, representations, and understandings.</p>
+
+      <h3>19.2 Severability</h3>
+      <p>If any provision of these Terms is held invalid, illegal, or unenforceable, that provision will be modified to the minimum extent necessary to make it enforceable, or if that is not possible, severed. The remaining provisions will continue in full force and effect.</p>
+
+      <h3>19.3 Waiver</h3>
+      <p>Our failure to enforce any provision of these Terms does not constitute a waiver of our right to enforce that provision in the future. Any waiver must be in writing to be effective.</p>
+
+      <h3>19.4 Assignment</h3>
+      <p>You may not assign or transfer your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without restriction, including in connection with a merger, acquisition, or sale of assets. These Terms bind and inure to the benefit of each party's permitted assigns.</p>
+
+      <h3>19.5 Force Majeure</h3>
+      <p>We are not liable for any failure or delay in performance resulting from causes beyond our reasonable control, including acts of God, war, terrorism, riots, embargos, acts of civil or military authorities, fires, floods, epidemics, pandemics, network failures, Internet outages, third-party service failures, or changes in law or regulation.</p>
+
+      <h3>19.6 No Agency</h3>
+      <p>Nothing in these Terms creates any agency, partnership, joint venture, employment, or franchise relationship between you and Nora.</p>
+
+      <h3>19.7 Notices</h3>
+      <p>Legal notices to us must be sent by email to <a href="mailto:dilmurodshukurullayev75@gmail.com" style="color:var(--accent-light);">dilmurodshukurullayev75@gmail.com</a> with the subject line "Legal Notice." We may provide notices to you via in-app messages, push notifications, or the email address on your account.</p>
+
+      <h3>19.8 Language</h3>
+      <p>These Terms are written in English. If translated into other languages for convenience, the English version controls in the event of any conflict.</p>
+    </section>
+
+    <!-- 20 -->
+    <section id="s20">
+      <div class="section-header">
+        <span class="section-num">20</span>
+        <h2>Contact Information</h2>
+      </div>
+      <div class="contact-block">
+        <p><strong>Nora AI Voice Companion</strong><br />
+        Individual Developer / Solo Founder</p>
+        <br />
+        <p><strong>Email:</strong> <a href="mailto:dilmurodshukurullayev75@gmail.com">dilmurodshukurullayev75@gmail.com</a></p>
+        <p><strong>Website:</strong> <a href="https://nora-landing-blue.vercel.app">https://nora-landing-blue.vercel.app</a></p>
+        <p><strong>App Package:</strong> com.nora.ai</p>
+        <br />
+        <p>For questions about these Terms, suspected violations, account issues, or legal inquiries, please contact us at the email above. We endeavor to respond to all inquiries within <strong>5 business days</strong>.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>
+    &copy; 2026 Nora AI Voice Companion &nbsp;|&nbsp;
+    <a href="https://nora-landing-blue.vercel.app">Home</a> &nbsp;|&nbsp;
+    <a href="nora_privacy_policy.html">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="mailto:dilmurodshukurullayev75@gmail.com">Contact</a>
+  </p>
+  <p style="margin-top:8px;">Last updated: June 7, 2026</p>
+</footer>
+
 </body>
 </html>
